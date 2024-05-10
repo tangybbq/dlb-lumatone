@@ -13,6 +13,8 @@ use std::{collections::BTreeMap, path::Path};
 
 use anyhow::Result;
 
+mod svg;
+
 /// The lumatone itself represents the keys by a pair of numbers, the group, a
 /// number between 0 and 4, and the key itself, a number between 0 and 56.
 #[derive(Debug, Copy, Clone, Eq, PartialEq)]
@@ -69,6 +71,13 @@ impl Default for Keyboard {
             // keys: Default::default(),
             keys: [a, b, c, d, e],
         }
+    }
+}
+
+impl Keyboard {
+    pub fn write_svg<P: AsRef<Path>>(&self, p: P) -> Result<()> {
+        let writer = svg::SvgOut::new();
+        writer.save(p)
     }
 }
 

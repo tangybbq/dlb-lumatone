@@ -13,4 +13,11 @@ name = "microtone"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "svg",
 ]
+
+[[package]]
+name = "svg"
+version = "0.17.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "700efb40f3f559c23c18b446e8ed62b08b56b2bb3197b36d57e0470b4102779e"
