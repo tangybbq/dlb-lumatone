@@ -282,25 +282,25 @@ impl Tuning for Edo {
             if ch == 'C' {
                 if let Some(ch) = iter.next() {
                     if ch == '-' || ch.is_digit(10) {
-                        return RGB8::new(192, 192, 130);
+                        return RGB8::new(192, 192, 65);
                     }
                 }
             }
         }
         if name.len() == 2 {
-            return RGB8::new(130, 130, 192);
+            return RGB8::new(65, 65, 192);
         }
 
         // The unusual accidentals are a bit out of place in 31, so give them
         // their own colors.
         if name.starts_with("C♭") || name.starts_with("F♭") {
             // Blend the sharp and double sharp colors.
-            return RGB8::new(192, 149, 135);
+            return RGB8::new(192, 117, 67);
         }
 
         if name.starts_with("E♯") || name.starts_with("B♯") {
             // Blend the flat and double flat colors.
-            return RGB8::new(161, 161, 192);
+            return RGB8::new(131, 117, 192);
         }
 
         // If we are "up" sharps will be the normal color, likewise, flats will
@@ -308,15 +308,15 @@ impl Tuning for Edo {
         if let Some(pos) = name.char_indices().skip(1).next() {
             let name = &name[pos.0..];
             if name.starts_with("♯") {
-                return RGB8::new(192, 130, 130);
+                return RGB8::new(192, 65, 65);
             }
             if name.starts_with("♭") {
-                return RGB8::new(192, 130, 192);
+                return RGB8::new(192, 65, 192);
             }
             if name.starts_with("𝄪") {
-                return RGB8::new(192, 169, 140);
+                return RGB8::new(192, 169, 70);
             }
-            return RGB8::new(130, 192, 192);
+            return RGB8::new(70, 192, 192);
         }
 
         RGB8::new(130, 192, 130)

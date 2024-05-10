@@ -15,6 +15,7 @@ use anyhow::Result;
 
 use crate::tuning::{Interval, MidiNote, Tuning};
 
+mod ltn;
 mod svg;
 
 /// The lumatone itself represents the keys by a pair of numbers, the group, a
@@ -76,6 +77,15 @@ impl RGB8 {
 
     pub fn to_hex(&self) -> String {
         format!("#{:02x}{:02x}{:02x}", self.r, self.g, self.b)
+    }
+
+    pub fn parse(text: &str) -> Result<RGB8> {
+        let hex = u32::from_str_radix(text, 16)?;
+        Ok(RGB8 {
+            r: ((hex >> 16) & 0xff) as u8,
+            g: ((hex >> 8) & 0xff) as u8,
+            b: (hex & 0xff) as u8,
+        })
     }
 
     pub const fn white() -> RGB8 {
@@ -390,8 +400,13 @@ impl MoveMap {
 
 impl Keyboard {
     /// Attempt to load a keyboard from a .ltn file.
-    pub fn load<P: AsRef<Path>>(_path: P) -> Result<Keyboard> {
-        todo!()
+    pub fn load<P: AsRef<Path>>(path: P) -> Result<Keyboard> {
+        ltn::load(path)
+    }
+
+    /// Write this keyboard out to a LTN file.
+    pub fn write_ltn<P: AsRef<Path>>(&self, path: P) -> Result<()> {
+        ltn::save(path, self)
     }
 
     /// Fill in this keyboard, with a Lumatone reference chart.  The labels give

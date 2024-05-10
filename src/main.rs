@@ -60,6 +60,9 @@ static LTNS: &'static [Ltn] = &[
 
 fn main() -> Result<()> {
     // For now, just generate a keyboard, to view the SVG.
+    // let test = Keyboard::load("data/lumatone_Wicki-Hayden_v3.ltn")?;
+    let test = Keyboard::load("data/factory-2-harmonic-table.ltn")?;
+    test.write_svg("test-wh.svg")?;
 
     // Generate all of the layouts.
     for ltn in LTNS {
@@ -69,6 +72,7 @@ fn main() -> Result<()> {
         }
 
         keyb.write_svg(format!("{}.svg", ltn.name))?;
+        keyb.write_ltn(format!("{}.ltn", ltn.name))?;
     }
 
     Ok(())
