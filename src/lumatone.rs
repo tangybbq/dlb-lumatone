@@ -13,10 +13,13 @@ use std::{collections::BTreeMap, path::Path};
 
 use anyhow::Result;
 
-use crate::tuning::{Interval, MidiNote, Tuning};
+use crate::tuning::{Interval, Tuning};
+
+use self::fill::Filler;
 
 mod ltn;
 mod svg;
+mod fill;
 
 /// The lumatone itself represents the keys by a pair of numbers, the group, a
 /// number between 0 and 4, and the key itself, a number between 0 and 56.
@@ -175,10 +178,12 @@ impl Keyboard {
             .and_then(|x| x)
     }
 
-    pub fn get_mut(&mut self, index: KeyIndex) -> Option<&mut KeyInfo> {
+    /// Get a mutable reference to the info for a cell. The outer Option
+    /// indicates the position is valid, and the inner option (that can be
+    /// changed) holds the potentially useful information about the cell.
+    pub fn get_mut(&mut self, index: KeyIndex) -> Option<&mut Option<KeyInfo>> {
         self.keys.get_mut(index.group as usize)
-            .and_then(|k| k.get_mut(index.key as usize).map(|x| x.as_mut()))
-            .and_then(|x| x)
+            .and_then(|k| k.get_mut(index.key as usize))
     }
 
     // Set a new value for the key.  This panics if the KeyIndex is invalid.
@@ -437,121 +442,8 @@ impl Keyboard {
         // The description of what to fill in.
         info: &FillInfo,
     ) {
-        let mv = MoveMap::make();
-        let base = info.start;
-        let base_note = tuning.middle_c();
-
-        self.fill_dir(
-            base,
-            base_note,
-            tuning,
-            layout,
-            &mv,
-            layout.right,
-            (info.left, info.right),
-            false,
-        );
-        self.fill_dir(
-            base,
-            base_note,
-            tuning,
-            layout,
-            &mv,
-            layout.right,
-            (info.left, info.right),
-            true,
-        );
-    }
-
-    fn fill_dir(&mut self,
-                mut pos: KeyIndex,
-                mut note: MidiNote,
-                tuning: &dyn Tuning,
-                layout: &Layout,
-                mv: &MoveMap,
-                interval: Interval,
-                steps: (usize, usize),
-                up: bool,
-    )
-    {
-        let mut phase = true;
-        loop {
-            // println!("Fill at: {:?} with {}",
-            //          pos, tuning.name(note, true));
-            self.span(&mv, pos, note, steps.1, tuning,
-                      Dir::Right, interval, true);
-            self.span(&mv, pos, note, steps.0, tuning,
-                      Dir::Left, interval, false);
-
-            let dir = if up {
-                if phase { Dir::UpLeft } else { Dir::UpRight }
-            } else {
-                if phase { Dir::DownLeft } else { Dir::DownRight }
-            };
-
-            let interval = if phase ^ up { layout.up_right } else { layout.up_left };
-            if let Some(npos) = mv.trymove(pos, dir) {
-                pos = npos;
-            } else {
-                break;
-            }
-            if let Some(nnote) = tuning.interval(note, interval, up) {
-                note = nnote;
-            } else {
-                break;
-            }
-            phase = !phase;
-        }
-    }
-
-    /// For a span, store a note.
-    fn store(&mut self, tuning: &dyn Tuning, pos: KeyIndex, note: MidiNote, up: bool) {
-        self.set(pos, Some(KeyInfo {
-            channel: note.channel,
-            note: note.note,
-            color: tuning.color(note, up),
-            label: tuning.name(note, up),
-        }));
-    }
-
-    /// Generate a span from a given starting note, for 'n' notes in the given
-    /// direction, with the given interval.
-    fn span(&mut self,
-            mv: &MoveMap,
-            mut pos: KeyIndex,
-            mut note: MidiNote,
-            n: usize,
-            tuning: &dyn Tuning,
-            dir: Dir,
-            interval: Interval,
-            up: bool,
-    ) {
-        for _ in 0..n {
-            // As a little trick, to highlight the edge, when we encounter a
-            // cell that is already filled, and with a different note than we
-            // are placing, lighten the node we just encountered.
-            if let Some(key) = self.get_mut(pos) {
-                if key.channel != note.channel || key.note != note.note {
-                    key.color = key.color.lighten();
-                    // We've encountered something already set, so stop filling.
-                    break;
-                }
-            } else {
-                self.store(tuning, pos, note, up);
-            }
-
-            if let Some(npos) = mv.trymove(pos, dir) {
-                pos = npos;
-            } else {
-                break;
-            }
-
-            if let Some(nnote) = tuning.interval(note, interval, up) {
-                note = nnote;
-            } else {
-                break;
-            }
-        }
+        let mut filler = Filler::new(self, tuning, layout, info);
+        filler.run();
     }
 }
 
