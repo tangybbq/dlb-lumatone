@@ -40,7 +40,7 @@ impl SvgOut {
 
     pub fn save<P: AsRef<std::path::Path>>(&self, p: P) -> Result<()> {
         let mut document = Document::new()
-            .set("viewBox", (-20, -20, 36.0 * SPACING, 8.0 * SPACING));
+            .set("viewBox", (-20, -20, 36.0 * SPACING, 12.0 * SPACING));
 
         document = document.add(Style::new(
             r".black { font: 3px serif; }"
