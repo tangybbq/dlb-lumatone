@@ -79,7 +79,7 @@ impl SvgOut {
 
         // TODO: Come up with better parameters.
         Path::new()
-            .set("fill", color.to_hex())
+            .set("fill", color.lighten().to_hex())
             .set("stroke", "black")
             .set("stroke-width", 0.3)
             .set("d", data)
