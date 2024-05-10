@@ -25,6 +25,12 @@ pub struct KeyIndex {
     pub key: u8,
 }
 
+impl KeyIndex {
+    pub fn origin() -> KeyIndex {
+        KeyIndex { group: 0, key: 0 }
+    }
+}
+
 /// A delta move.  Indicates A movement.
 #[derive(Debug, Copy, Clone)]
 struct KeyMove {
@@ -59,6 +65,20 @@ pub struct RGB8 {
     pub b: u8,
 }
 
+impl RGB8 {
+    pub fn new(r: u8, g: u8, b: u8) -> RGB8 {
+        RGB8 { r, g, b }
+    }
+
+    pub fn to_hex(&self) -> String {
+        format!("#{:02x}{:02x}{:02x}", self.r, self.g, self.b)
+    }
+
+    pub const fn white() -> RGB8 {
+        RGB8 { r: 255, g: 255, b: 255 }
+    }
+}
+
 impl Default for Keyboard {
     fn default() -> Self {
         let a: [KeyInfo; 56] = std::array::from_fn(|_| Default::default());
@@ -76,8 +96,57 @@ impl Default for Keyboard {
 
 impl Keyboard {
     pub fn write_svg<P: AsRef<Path>>(&self, p: P) -> Result<()> {
-        let writer = svg::SvgOut::new();
+        let mut writer = svg::SvgOut::new();
+        let mv = MoveMap::make();
+
+        let mut row_start = KeyIndex::origin();
+        let mut last_x0 = 0;
+
+        for (y, &(x0, xlen)) in SIZES.iter().enumerate() {
+            // Move to the new position.
+            if y > 0 {
+                // Move to the right before down, so we always stay within the
+                // keyboard.
+                while x0 > last_x0 {
+                    row_start = mv.trymove(row_start, Dir::Right).unwrap();
+                    last_x0 += 1;
+                }
+
+                // Now move down.
+                let dir = if (y & 1) == 1 {
+                    Dir::DownRight
+                } else {
+                    Dir::DownLeft
+                };
+                row_start = mv.trymove(row_start, dir)
+                    .unwrap();
+                // println!("Move {:?} to {:?}", dir, row_start);
+            }
+
+            let mut key = row_start.clone();
+            for x in x0..x0 + xlen {
+                if x > x0 {
+                    // If this fails, our table of positions is wrong.
+                    // println!("At {:?} move right", key);
+                    key = mv.trymove(key, Dir::Right).unwrap();
+                }
+                match self.get(key) {
+                    Some(info) => {
+                        let label = format!("{},{}", key.group, key.key);
+                        writer.add(x, y as u32, /*info.color*/ RGB8::white(), &label);
+                    }
+                    None => {
+                        writer.add(x, y as u32, RGB8::white(), "");
+                    }
+                }
+            }
+        }
+
         writer.save(p)
+    }
+
+    pub fn get(&self, index: KeyIndex) -> Option<&KeyInfo> {
+        self.keys.get(index.group as usize).and_then(|k| k.get(index.key as usize))
     }
 }
 
@@ -404,3 +473,26 @@ impl Iterator for KeyIndexIter {
         Some(result)
     }
 }
+
+/// The offset and sizes of each for each row of the lumatone.
+static SIZES: [(u32, u32); 19] = [
+    (0, 2),
+    (0, 5),
+    (0, 8),
+    (0, 11),
+    (0, 14),
+    (0, 17),
+    (0, 20),
+    (0, 23),
+    (0, 26),
+    (1, 28),
+    (4, 26),
+    (7, 23),
+    (10, 20),
+    (13, 17),
+    (16, 14),
+    (19, 11),
+    (22, 8),
+    (25, 5),
+    (28, 2),
+    ];

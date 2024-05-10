@@ -4,6 +4,8 @@ use anyhow::Result;
 use svg::{node::element::{path::Data, Path, Style, Text}, Document};
 use std::f32::consts;
 
+use super::RGB8;
+
 // The Lumatone keyboard consists of a regular grid of hexagons, alternate rows
 // being offset by `SPACING/2.0`.
 
@@ -18,12 +20,22 @@ const TILT: f32 = 16.0 / 360.0 * (2.0 * consts::PI);
 
 /// An SVG generator for a lumatone keyboard type of layout.
 pub struct SvgOut {
+    keys: Vec<Path>,
+    labels: Vec<Text>,
 }
 
 impl SvgOut {
     pub fn new() -> SvgOut {
         SvgOut {
+            keys: Vec::new(),
+            labels: Vec::new(),
         }
+    }
+
+    /// Add a single key, with a given color and label.
+    pub fn add(&mut self, x: u32, y: u32, color: RGB8, label: &str) {
+        self.keys.push(self.make_hex(x, y, color));
+        self.labels.push(self.make_text(x, y, label));
     }
 
     pub fn save<P: AsRef<std::path::Path>>(&self, p: P) -> Result<()> {
@@ -34,12 +46,12 @@ impl SvgOut {
             r".black { font: 3px serif; }"
             ));
 
-        for (y, &(x0, xlen)) in SIZES.iter().enumerate() {
-            for x in x0..x0 + xlen {
-                let label = format!("{},{}", x, y);
-                document = document.add(self.make_hex(x, y as u32));
-                document = document.add(self.make_text(x, y as u32, &label))
-            }
+        // TODO: Save could be `self` and we wouldn't need to clone.
+        for key in &self.keys {
+            document = document.add(key.clone());
+        }
+        for label in &self.labels {
+            document = document.add(label.clone());
         }
 
         svg::save(p, &document)?;
@@ -47,7 +59,7 @@ impl SvgOut {
     }
 
     /// Generate a path element for a basic hexagon.
-    fn make_hex(&self, x: u32, y: u32) -> Path {
+    fn make_hex(&self, x: u32, y: u32, color: RGB8) -> Path {
         let (x, y) = self.coord(x, y);
         let mut data = Data::new();
 
@@ -67,7 +79,7 @@ impl SvgOut {
 
         // TODO: Come up with better parameters.
         Path::new()
-            .set("fill", "#f0e0d0")
+            .set("fill", color.to_hex())
             .set("stroke", "black")
             .set("stroke-width", 0.3)
             .set("d", data)
@@ -96,29 +108,6 @@ impl SvgOut {
          x * tilt.sin() + y * tilt.cos())
     }
 }
-
-/// The offset and sizes of each for.
-static SIZES: [(u32, u32); 19] = [
-    (0, 2),
-    (0, 5),
-    (0, 8),
-    (0, 11),
-    (0, 14),
-    (0, 17),
-    (0, 20),
-    (0, 23),
-    (0, 26),
-    (1, 28),
-    (4, 26),
-    (7, 23),
-    (10, 20),
-    (13, 17),
-    (16, 14),
-    (19, 11),
-    (22, 8),
-    (25, 5),
-    (28, 2),
-    ];
 
 #[test]
 fn gen() {
