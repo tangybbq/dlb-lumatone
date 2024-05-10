@@ -105,8 +105,8 @@ static LTNS: &'static [Ltn] = &[
 fn main() -> Result<()> {
     // For now, just generate a keyboard, to view the SVG.
     // let test = Keyboard::load("data/lumatone_Wicki-Hayden_v3.ltn")?;
-    let test = Keyboard::load("data/factory-2-harmonic-table.ltn")?;
-    test.write_svg("test-wh.svg")?;
+    // let test = Keyboard::load("data/factory-2-harmonic-table.ltn")?;
+    // test.write_svg("test-wh.svg")?;
 
     let _ = create_dir("layouts");
 
