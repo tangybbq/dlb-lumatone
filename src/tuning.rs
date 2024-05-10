@@ -196,8 +196,8 @@ static EDO31_NAMES: [&'static str; 31] = [
     "E♭",
     "D𝄪",
     "E",
-    "E♯",
     "F♭",
+    "E♯",
     "F",
     "G𝄫",
     "F♯",
@@ -214,8 +214,8 @@ static EDO31_NAMES: [&'static str; 31] = [
     "B♭",
     "A𝄪",
     "B",
-    "B♯",
     "C♭",
+    "B♯",
 ];
 
 impl Tuning for Edo {
