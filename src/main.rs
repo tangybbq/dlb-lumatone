@@ -19,7 +19,7 @@ struct Ltn {
 // Various fills.
 static SPLIT_FILL: &'static [FillInfo] = &[
     FillInfo {
-        left: 9,
+        left: 8,
         right: 9,
         start: KeyIndex { group: 3, key: 47 },
     },
