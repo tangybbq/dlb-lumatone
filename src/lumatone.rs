@@ -335,10 +335,10 @@ impl MoveMap {
         dl[54] = None;
         dl[55] = None;
         // Moves to next group.
-        dl[0].as_mut().map(|k| k.group = 1);
-        dl[7].as_mut().map(|k| k.group = 1);
-        dl[19].as_mut().map(|k| k.group = 1);
-        dl[31].as_mut().map(|k| k.group = 1);
+        dl[0].as_mut().map(|k| k.group = -1);
+        dl[7].as_mut().map(|k| k.group = -1);
+        dl[19].as_mut().map(|k| k.group = -1);
+        dl[31].as_mut().map(|k| k.group = -1);
 
         result.insert(Dir::DownLeft, dl);
 
@@ -364,11 +364,11 @@ impl MoveMap {
         ur[5] = None;
         ur[6] = None;
         ur[12] = None;
-        // Moves to previous group.
-        ur[18].as_mut().map(|k| k.group = -1);
-        ur[30].as_mut().map(|k| k.group = -1);
-        ur[42].as_mut().map(|k| k.group = -1);
-        ur[53].as_mut().map(|k| k.group = -1);
+        // Moves to next group.
+        ur[18].as_mut().map(|k| k.group = 1);
+        ur[30].as_mut().map(|k| k.group = 1);
+        ur[42].as_mut().map(|k| k.group = 1);
+        ur[53].as_mut().map(|k| k.group = 1);
 
         result.insert(Dir::UpRight, ur);
 
