@@ -49,12 +49,14 @@ pub struct KeyInfo {
     pub note: u8,
     /// The color representing this key.
     pub color: RGB8,
+    /// A label to print on the key.
+    pub label: String,
 }
 
 /// The entire keyboard.
 #[derive(Debug, Clone)]
 pub struct Keyboard {
-    pub keys: [[KeyInfo; 56]; 5],
+    pub keys: [[Option<KeyInfo>; 56]; 5],
 }
 
 /// For now, just use a local RGB8.  This should match other definitions.
@@ -66,7 +68,7 @@ pub struct RGB8 {
 }
 
 impl RGB8 {
-    pub fn new(r: u8, g: u8, b: u8) -> RGB8 {
+    pub const fn new(r: u8, g: u8, b: u8) -> RGB8 {
         RGB8 { r, g, b }
     }
 
@@ -77,11 +79,21 @@ impl RGB8 {
     pub const fn white() -> RGB8 {
         RGB8 { r: 255, g: 255, b: 255 }
     }
+
+    /// Lighten this color.  This is commonly desired on the Lumatone, as dim
+    /// values are kind of hard to see.  It also helps make graphics easier to see.
+    pub const fn lighten(self) -> RGB8 {
+        RGB8 {
+            r: self.r / 2 + 128,
+            g: self.g / 2 + 128,
+            b: self.b / 2 + 128,
+        }
+    }
 }
 
 impl Default for Keyboard {
     fn default() -> Self {
-        let a: [KeyInfo; 56] = std::array::from_fn(|_| Default::default());
+        let a: [Option<KeyInfo>; 56] = std::array::from_fn(|_| Default::default());
         let b = a.clone();
         let c = a.clone();
         let d = a.clone();
@@ -133,12 +145,7 @@ impl Keyboard {
                 match self.get(key) {
                     Some(info) => {
                         let label = format!("{},{}", key.group, key.key);
-                        let color = if key.key == 0 {
-                            RGB8::new(250, 200, 200)
-                        } else {
-                            RGB8::white()
-                        };
-                        writer.add(x, y as u32, /*info.color*/ color, &label);
+                        writer.add(x, y as u32, info.color, &label);
                     }
                     None => {
                         writer.add(x, y as u32, RGB8::white(), "");
@@ -151,7 +158,20 @@ impl Keyboard {
     }
 
     pub fn get(&self, index: KeyIndex) -> Option<&KeyInfo> {
-        self.keys.get(index.group as usize).and_then(|k| k.get(index.key as usize))
+        self.keys.get(index.group as usize)
+            .and_then(|k| k.get(index.key as usize).map(|x| x.as_ref()))
+            .and_then(|x| x)
+    }
+
+    pub fn get_mut(&mut self, index: KeyIndex) -> Option<&mut KeyInfo> {
+        self.keys.get_mut(index.group as usize)
+            .and_then(|k| k.get_mut(index.key as usize).map(|x| x.as_mut()))
+            .and_then(|x| x)
+    }
+
+    // Set a new value for the key.  This panics if the KeyIndex is invalid.
+    pub fn set(&mut self, index: KeyIndex, info: Option<KeyInfo>) {
+        self.keys[index.group as usize][index.key as usize] = info;
     }
 }
 
@@ -371,6 +391,20 @@ impl Keyboard {
     pub fn load<P: AsRef<Path>>(_path: P) -> Result<Keyboard> {
         todo!()
     }
+
+    /// Fill in this keyboard, with a Lumatone reference chart.  The labels give
+    /// the key number and the colors indicate the 5 sections.
+    pub fn fill_reference(&mut self) {
+        for key in KeyIndex::iter_all() {
+            let label = format!("{}", key.key);
+            self.set(key, Some(KeyInfo {
+                channel: 0,
+                note: 0,
+                color: SECTIONS[key.group as usize],
+                label,
+            }));
+        }
+    }
 }
 
 #[cfg(test)]
@@ -465,7 +499,7 @@ struct KeyIndexIter {
 impl Iterator for KeyIndexIter {
     type Item = KeyIndex;
     fn next(&mut self) -> Option<KeyIndex> {
-        if self.group > 5 {
+        if self.group >= 5 {
             return None;
         }
         let result = KeyIndex { group: self.group, key: self.key };
@@ -500,4 +534,13 @@ static SIZES: [(u32, u32); 19] = [
     (22, 8),
     (25, 5),
     (28, 2),
+    ];
+
+/// Some colors for the sections.
+static SECTIONS: [RGB8; 5] = [
+    RGB8::new(204, 61, 61).lighten(),  // A pastel red
+    RGB8::new(175, 204, 61).lighten(), // A pastel lime green
+    RGB8::new(61, 204, 118).lighten(), // A pastel turquoise
+    RGB8::new(61, 118, 204).lighten(), // A pastel blue
+    RGB8::new(175, 61, 204).lighten(), // A pastel purple
     ];
