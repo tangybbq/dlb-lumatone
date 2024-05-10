@@ -512,7 +512,18 @@ impl Keyboard {
             up: bool,
     ) {
         for _ in 0..n {
-            self.store(tuning, pos, note, up);
+            // As a little trick, to highlight the edge, when we encounter a
+            // cell that is already filled, and with a different note than we
+            // are placing, lighten the node we just encountered.
+            if let Some(key) = self.get_mut(pos) {
+                if key.channel != note.channel || key.note != note.note {
+                    key.color = key.color.lighten();
+                    // We've encountered something already set, so stop filling.
+                    break;
+                }
+            } else {
+                self.store(tuning, pos, note, up);
+            }
 
             if let Some(npos) = mv.trymove(pos, dir) {
                 pos = npos;
