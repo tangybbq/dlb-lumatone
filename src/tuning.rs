@@ -300,12 +300,12 @@ impl Tuning for Edo {
         // their own colors.
         if name.starts_with("C♭") || name.starts_with("F♭") {
             // Blend the sharp and double sharp colors.
-            return RGB8::new(192, 117, 67);
+            return RGB8::new(131, 117, 192);
         }
 
         if name.starts_with("E♯") || name.starts_with("B♯") {
             // Blend the flat and double flat colors.
-            return RGB8::new(131, 117, 192);
+            return RGB8::new(192, 117, 67);
         }
 
         // If we are "up" sharps will be the normal color, likewise, flats will
