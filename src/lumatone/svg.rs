@@ -128,5 +128,6 @@ fn gen() {
         .set("viewBox", (0, 0, 70, 70))
         .add(path);
 
-    svg::save("image.svg", &document).unwrap();
+    let _ = document;
+    // svg::save("image.svg", &document).unwrap();
 }
