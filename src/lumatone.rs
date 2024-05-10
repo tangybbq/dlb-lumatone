@@ -375,7 +375,7 @@ impl MoveMap {
             .and_then(|mv| {
                 // Check if we move off of the edge.
                 if (mv.group < 0 && key.group == 0) ||
-                    (mv.group > 0 && key.group == 5)
+                    (mv.group > 0 && key.group == 4)
                 {
                     None
                 } else {
