@@ -424,7 +424,7 @@ impl Keyboard {
     ) {
         let mv = MoveMap::make();
         let base = info.start;
-        let base_note = MidiNote { channel: 1, note: 60 };
+        let base_note = tuning.middle_c();
 
         self.fill_dir(
             base,
@@ -459,7 +459,6 @@ impl Keyboard {
                 up: bool,
     )
     {
-        // Fill in, moving down.
         let mut phase = true;
         loop {
             println!("Fill at: {:?} with {}",
@@ -495,7 +494,7 @@ impl Keyboard {
         self.set(pos, Some(KeyInfo {
             channel: note.channel,
             note: note.note,
-            color: tuning.color(note),
+            color: tuning.color(note, up),
             label: tuning.name(note, up),
         }));
     }

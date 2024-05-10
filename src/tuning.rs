@@ -40,7 +40,10 @@ pub trait Tuning {
     fn get_steps(&self, interval: Interval) -> isize;
 
     /// Guess a good color for this particular note.
-    fn color(&self, note: MidiNote) -> RGB8;
+    fn color(&self, note: MidiNote, sharp: bool) -> RGB8;
+
+    /// Return middle C for this tuning.
+    fn middle_c(&self) -> MidiNote;
 }
 
 /// A general Equal division of the octave.
@@ -106,43 +109,124 @@ static EDO12_FLAT_NAMES: [&'static str; 12] = [
     "B",
 ];
 
+pub static EDO19: Edo = Edo {
+    octave: 19,
+    channel_octaves: Some(60),
+    middle_c: MidiNote { channel: 4, note: 60 },
+    intervals: EDO19_INTERVALS.as_slice(),
+    sharp_names: EDO19_SHARP_NAMES.as_slice(),
+    flat_names: EDO19_FLAT_NAMES.as_slice(),
+};
+
+static EDO19_INTERVALS: [isize; 4] = [
+    2, 3, 8, 11,
+];
+
+
+static EDO19_SHARP_NAMES: [&'static str; 19] = [
+    "C",
+    "C♯",
+    "D♭",
+    "D",
+    "D♯",
+    "E♭",
+    "E",
+    "E♯",
+    "F",
+    "F♯",
+    "G♭",
+    "G",
+    "G♯",
+    "A♭",
+    "A",
+    "A♯",
+    "B♭",
+    "B",
+    "B♯",
+];
+
+static EDO19_FLAT_NAMES: [&'static str; 19] = [
+    "C",
+    "C♯",
+    "D♭",
+    "D",
+    "D♯",
+    "E♭",
+    "E",
+    "F♭",
+    "F",
+    "F♯",
+    "G♭",
+    "G",
+    "G♯",
+    "A♭",
+    "A",
+    "A♯",
+    "B♭",
+    "B",
+    "C♭",
+];
+
 impl Tuning for Edo {
     fn get_steps(&self, interval: Interval) -> isize {
         self.intervals[interval as usize]
     }
 
     fn interval(&self, note: MidiNote, interval: Interval, up: bool) -> Option<MidiNote> {
-        if self.channel_octaves.is_some() {
-            // This needs to be different.
-            todo!()
+        if let Some(bias) = self.channel_octaves {
+            let bias = bias as usize;
+
+            // Bias everything by 100 octaves.  This shouldn't be a problem even
+            // with very fine tunings.
+            let steps = self.get_steps(interval);
+            if steps < 0 {
+                // We don't support tunings with negative intervals.
+                todo!();
+            }
+            let steps = steps as usize;
+            let pitch = (100 + note.channel as usize) * self.octave as usize
+                + (note.note as usize - bias);
+            let pitch = if up { pitch + steps } else { pitch - steps };
+            let octave = pitch / self.octave;
+            if octave < 100 || octave > 227 {
+                println!("Out of bound octave: {}", octave);
+                return None;
+            }
+            let octave = octave - 100;
+            let pitch = pitch % self.octave + bias;
+            Some(MidiNote { channel: octave as u8, note: pitch as u8, })
+        } else {
+            let steps = self.get_steps(interval);
+            let steps = u8::try_from(steps).ok()?;
+            let pitch = if up { note.note.checked_add(steps)? } else { note.note.checked_sub(steps)? };
+            if pitch > 127 {
+                return None;
+            }
+            Some(MidiNote { channel: note.channel, note: pitch, })
         }
-        let steps = self.get_steps(interval);
-        let steps = u8::try_from(steps).ok()?;
-        let pitch = if up { note.note.checked_add(steps)? } else { note.note.checked_sub(steps)? };
-        if pitch > 127 {
-            return None;
-        }
-        Some(MidiNote { channel: note.channel, note: pitch, })
     }
 
     fn name(&self, note: MidiNote, sharp: bool) -> String {
-        if self.channel_octaves.is_some() {
-            todo!()
+        if let Some(bias) = self.channel_octaves {
+            let pitch = note.note as usize - bias;
+            let octave = note.channel;
+            let names = if sharp { self.sharp_names } else { self.flat_names };
+            format!("{}{}", names[pitch as usize], octave)
+        } else {
+            // We assume that Middle C is C-4.
+            let pitch = note.note as isize - self.middle_c.note as isize;
+            let pitch = pitch + self.octave as isize * 4;
+            let octave = pitch / (self.octave as isize);
+            let pitch = pitch % (self.octave as isize);
+            let names = if sharp { self.sharp_names } else { self.flat_names };
+            format!("{}{}", names[pitch as usize], octave)
         }
-
-        // We assume that Middle C is C-4.
-        let pitch = note.note as isize - self.middle_c.note as isize;
-        let pitch = pitch + self.octave as isize * 4;
-        let octave = pitch / (self.octave as isize);
-        let pitch = pitch % (self.octave as isize);
-        let names = if sharp { self.sharp_names } else { self.flat_names };
-        format!("{}{}", names[pitch as usize], octave)
     }
 
     /// To start with, just base the color on the length of the note, with a
     /// special case for C4.
-    fn color(&self, note: MidiNote) -> RGB8 {
-        let name = self.name(note, true);
+    fn color(&self, note: MidiNote, sharp: bool) -> RGB8 {
+        let name = self.name(note, sharp);
         if name == "C4" {
             return RGB8::new(150, 150, 192);
         }
@@ -160,7 +244,22 @@ impl Tuning for Edo {
         if name.len() == 2 {
             return RGB8::new(130, 130, 192);
         }
-        RGB8::new(192, 130, 130)
+
+        // If we are "up" sharps will be the normal color, likewise, flats will
+        // be the normal color down, otherwise use an alternate color.
+        if let Some(pos) = name.char_indices().skip(1).next() {
+            if name[pos.0..].starts_with("♯") {
+                return RGB8::new(192, 130, 130);
+            } else {
+                return RGB8::new(192, 130, 192);
+            }
+        }
+
+        RGB8::new(130, 192, 130)
+    }
+
+    fn middle_c(&self) -> MidiNote {
+        self.middle_c
     }
 }
 
