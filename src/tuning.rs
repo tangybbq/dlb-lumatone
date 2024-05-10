@@ -212,6 +212,7 @@ static EDO31_NAMES: [&'static str; 31] = [
     "B♯",
     "C♭",
 ];
+
 impl Tuning for Edo {
     fn get_steps(&self, interval: Interval) -> isize {
         self.intervals[interval as usize]
