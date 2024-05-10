@@ -571,6 +571,12 @@ pub static WICKI_HAYDEN: Layout = Layout {
     up_right: Interval::PerfectFifth,
 };
 
+pub static HARMONIC_TABLE: Layout = Layout {
+    right: Interval::MajorThird,
+    up_left: Interval::MinorThird,
+    up_right: Interval::PerfectFifth,
+};
+
 /// Parameters needed to fill a layout.
 pub struct FillInfo {
     // How many places to move to the left.

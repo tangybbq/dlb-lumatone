@@ -1,11 +1,13 @@
 use anyhow::Result;
-use microtone::{lumatone::{FillInfo, KeyIndex, Keyboard, WICKI_HAYDEN}, tuning::{Tuning, EDO12, EDO19, EDO31}};
+use microtone::{lumatone::{FillInfo, KeyIndex, Keyboard, Layout, HARMONIC_TABLE, WICKI_HAYDEN}, tuning::{Tuning, EDO12, EDO19, EDO31}};
 
 // An ltn to generate.  For each, we generate an ltn, and a svg showing the
 // layout.
 struct Ltn {
     /// The tuning to use for this Ltn.
     tuning: &'static (dyn Tuning + Sync),
+    /// Layout
+    layout: &'static Layout,
     /// How to fill in the keys.
     fills: &'static [FillInfo],
     /// The base of the filename.
@@ -39,22 +41,62 @@ static LTNS: &'static [Ltn] = &[
     Ltn {
         tuning: &EDO12,
         fills: SPLIT_FILL,
+        layout: &WICKI_HAYDEN,
         name: "dlb-edo12-wicki-hayden-split",
     },
     Ltn {
         tuning: &EDO19,
         fills: SPLIT_FILL,
+        layout: &WICKI_HAYDEN,
         name: "dlb-edo19-wicki-hayden-split",
     },
     Ltn {
         tuning: &EDO31,
         fills: SPLIT_FILL,
+        layout: &WICKI_HAYDEN,
         name: "dlb-edo31-wicki-hayden-split",
     },
     Ltn {
         tuning: &EDO31,
         fills: WIDE_FILL,
+        layout: &WICKI_HAYDEN,
         name: "dlb-edo31-wicki-hayden-wide",
+    },
+    Ltn {
+        tuning: &EDO12,
+        fills: SPLIT_FILL,
+        layout: &HARMONIC_TABLE,
+        name: "dlb-edo12-harmonic-split",
+    },
+    Ltn {
+        tuning: &EDO12,
+        fills: WIDE_FILL,
+        layout: &HARMONIC_TABLE,
+        name: "dlb-edo12-harmonic-wide",
+    },
+    Ltn {
+        tuning: &EDO19,
+        fills: SPLIT_FILL,
+        layout: &HARMONIC_TABLE,
+        name: "dlb-edo19-harmonic-split",
+    },
+    Ltn {
+        tuning: &EDO19,
+        fills: WIDE_FILL,
+        layout: &HARMONIC_TABLE,
+        name: "dlb-edo19-harmonic-wide",
+    },
+    Ltn {
+        tuning: &EDO31,
+        fills: SPLIT_FILL,
+        layout: &HARMONIC_TABLE,
+        name: "dlb-edo31-harmonic-split",
+    },
+    Ltn {
+        tuning: &EDO31,
+        fills: WIDE_FILL,
+        layout: &HARMONIC_TABLE,
+        name: "dlb-edo31-harmonic-wide",
     },
 ];
 
@@ -68,7 +110,7 @@ fn main() -> Result<()> {
     for ltn in LTNS {
         let mut keyb = Keyboard::default();
         for fill in ltn.fills {
-            keyb.fill_layout(ltn.tuning, &WICKI_HAYDEN, fill);
+            keyb.fill_layout(ltn.tuning, ltn.layout, fill);
         }
 
         keyb.write_svg(format!("{}.svg", ltn.name))?;
