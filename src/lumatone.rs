@@ -133,7 +133,12 @@ impl Keyboard {
                 match self.get(key) {
                     Some(info) => {
                         let label = format!("{},{}", key.group, key.key);
-                        writer.add(x, y as u32, /*info.color*/ RGB8::white(), &label);
+                        let color = if key.key == 0 {
+                            RGB8::new(250, 200, 200)
+                        } else {
+                            RGB8::white()
+                        };
+                        writer.add(x, y as u32, /*info.color*/ color, &label);
                     }
                     None => {
                         writer.add(x, y as u32, RGB8::white(), "");
