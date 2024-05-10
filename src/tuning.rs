@@ -122,7 +122,6 @@ static EDO19_INTERVALS: [isize; 4] = [
     2, 3, 8, 11,
 ];
 
-
 static EDO19_SHARP_NAMES: [&'static str; 19] = [
     "C",
     "C♯",
@@ -167,6 +166,52 @@ static EDO19_FLAT_NAMES: [&'static str; 19] = [
     "C♭",
 ];
 
+pub static EDO31: Edo = Edo {
+    octave: 31,
+    channel_octaves: Some(60),
+    middle_c: MidiNote { channel: 4, note: 60 },
+    intervals: EDO31_INTERVALS.as_slice(),
+    sharp_names: EDO31_NAMES.as_slice(),
+    flat_names: EDO31_NAMES.as_slice(),
+};
+
+static EDO31_INTERVALS: [isize; 4] = [
+    3, 5, 13, 18,
+];
+
+static EDO31_NAMES: [&'static str; 31] = [
+    "C",
+    "D𝄫",
+    "C♯",
+    "D♭",
+    "C𝄪",
+    "D",
+    "E𝄫",
+    "D♯",
+    "E♭",
+    "D𝄪",
+    "E",
+    "E♯",
+    "F♭",
+    "F",
+    "G𝄫",
+    "F♯",
+    "G♭",
+    "F𝄪",
+    "G",
+    "A𝄫",
+    "G♯",
+    "A♭",
+    "G𝄪",
+    "A",
+    "B𝄫",
+    "A♯",
+    "B♭",
+    "A𝄪",
+    "B",
+    "B♯",
+    "C♭",
+];
 impl Tuning for Edo {
     fn get_steps(&self, interval: Interval) -> isize {
         self.intervals[interval as usize]
@@ -245,14 +290,32 @@ impl Tuning for Edo {
             return RGB8::new(130, 130, 192);
         }
 
+        // The unusual accidentals are a bit out of place in 31, so give them
+        // their own colors.
+        if name.starts_with("C♭") || name.starts_with("F♭") {
+            // Blend the sharp and double sharp colors.
+            return RGB8::new(192, 149, 135);
+        }
+
+        if name.starts_with("E♯") || name.starts_with("B♯") {
+            // Blend the flat and double flat colors.
+            return RGB8::new(161, 161, 192);
+        }
+
         // If we are "up" sharps will be the normal color, likewise, flats will
         // be the normal color down, otherwise use an alternate color.
         if let Some(pos) = name.char_indices().skip(1).next() {
-            if name[pos.0..].starts_with("♯") {
+            let name = &name[pos.0..];
+            if name.starts_with("♯") {
                 return RGB8::new(192, 130, 130);
-            } else {
+            }
+            if name.starts_with("♭") {
                 return RGB8::new(192, 130, 192);
             }
+            if name.starts_with("𝄪") {
+                return RGB8::new(192, 169, 140);
+            }
+            return RGB8::new(130, 192, 192);
         }
 
         RGB8::new(130, 192, 130)
