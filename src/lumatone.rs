@@ -461,8 +461,8 @@ impl Keyboard {
     {
         let mut phase = true;
         loop {
-            println!("Fill at: {:?} with {}",
-                     pos, tuning.name(note, true));
+            // println!("Fill at: {:?} with {}",
+            //          pos, tuning.name(note, true));
             self.span(&mv, pos, note, steps.1, tuning,
                       Dir::Right, interval, true);
             self.span(&mv, pos, note, steps.0, tuning,
