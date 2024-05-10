@@ -22,7 +22,7 @@ pub enum Interval {
 
 /// A tuning system, at least as much information as is needed to produce a
 /// keyboard layout and midi mapping.  Right now, the midi mapping is definitive.
-pub trait Tuning: Sync {
+pub trait Tuning {
     /// Adjust a note by an interval. `up` indicates a higher pitch when true.
     /// None indicates either the note is out of range, or the interval doesn't
     /// make sense with this tuning.

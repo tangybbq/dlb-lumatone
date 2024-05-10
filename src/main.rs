@@ -5,7 +5,7 @@ use microtone::{lumatone::{FillInfo, KeyIndex, Keyboard, WICKI_HAYDEN}, tuning::
 // layout.
 struct Ltn {
     /// The tuning to use for this Ltn.
-    tuning: &'static dyn Tuning,
+    tuning: &'static (dyn Tuning + Sync),
     /// How to fill in the keys.
     fills: &'static [FillInfo],
     /// The base of the filename.
