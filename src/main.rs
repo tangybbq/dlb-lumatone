@@ -1,3 +1,5 @@
+use std::fs::create_dir;
+
 use anyhow::Result;
 use microtone::{lumatone::{FillInfo, KeyIndex, Keyboard, Layout, HARMONIC_TABLE, WICKI_HAYDEN}, tuning::{Tuning, EDO12, EDO19, EDO31}};
 
@@ -106,6 +108,13 @@ fn main() -> Result<()> {
     let test = Keyboard::load("data/factory-2-harmonic-table.ltn")?;
     test.write_svg("test-wh.svg")?;
 
+    let _ = create_dir("layouts");
+
+    // Write the layout map.
+    let mut keyb = Keyboard::default();
+    keyb.fill_reference();
+    keyb.write_svg("layouts/lumatone-layout.svg")?;
+
     // Generate all of the layouts.
     for ltn in LTNS {
         let mut keyb = Keyboard::default();
@@ -113,8 +122,9 @@ fn main() -> Result<()> {
             keyb.fill_layout(ltn.tuning, ltn.layout, fill);
         }
 
-        keyb.write_svg(format!("{}.svg", ltn.name))?;
-        keyb.write_ltn(format!("{}.ltn", ltn.name))?;
+        let _ = create_dir(format!("layouts/{}", ltn.name));
+        keyb.write_svg(format!("layouts/{}/{}.svg", ltn.name, ltn.name))?;
+        keyb.write_ltn(format!("layouts/{}/{}.ltn", ltn.name, ltn.name))?;
     }
 
     Ok(())
