@@ -57,3 +57,39 @@ result in a layout that depends on the fill algorithm used.
 
 The FillInfo describes a starting key and gives left and right bounds.  The
 algorithm will fill fully vertically.
+
+## The Layouts
+
+### Wicki-Hayden
+
+The
+[Wicki-Hayden](https://en.wikipedia.org/wiki/Wicki%E2%80%93Hayden_note_layout)
+layout is a layout I haven't seen used as much on the Lumatone.  It places an
+emphasis on the diatonic scale.  I found this to be one of the easiest layouts
+to learn to play (coming from the standard piano layout).
+
+It looks like this with 12-EDO, split:
+
+![12-EDO Wicky-Hayden Split](https://raw.githubusercontent.com/tangybbq/dlb-lumatone/main/layouts/dlb-edo12-wicki-hayden-split/dlb-edo12-wicki-hayden-split.svg)
+
+along with the [layout files](layouts/dlb-edo12-wicki-hayden-split)
+
+For 19-EDO split:
+
+![19-EDO Wicky-Hayden Split](https://raw.githubusercontent.com/tangybbq/dlb-lumatone/main/layouts/dlb-edo19-wicki-hayden-split/dlb-edo19-wicki-hayden-split.svg)
+
+along with the [layout files](layouts/dlb-edo19-wicki-hayden-split)
+
+For 31-EDO, split:
+
+![31-EDO Wicky-Hayden Split](https://raw.githubusercontent.com/tangybbq/dlb-lumatone/main/layouts/dlb-edo31-wicki-hayden-split/dlb-edo31-wicki-hayden-split.svg)
+
+along with the [layout files](layouts/dlb-edo31-wicki-hayden-split)
+
+Due to size constraints, there are a few double sharps that are missing on the
+left half (the bass notes).  There is a wide 31-EDO layout that doesn't have the
+missing keys, but covers a lot less range.
+
+![31-EDO Wicky-Hayden Wide](https://raw.githubusercontent.com/tangybbq/dlb-lumatone/main/layouts/dlb-edo31-wicki-hayden-wide/dlb-edo31-wicki-hayden-wide.svg)
+
+along with the [layout files](layouts/dlb-edo31-wicki-hayden-wide)
