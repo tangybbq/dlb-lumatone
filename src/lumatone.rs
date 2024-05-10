@@ -420,7 +420,7 @@ impl Keyboard {
         // The layout for the keys.
         layout: &Layout,
         // The description of what to fill in.
-        info: FillInfo,
+        info: &FillInfo,
     ) {
         let mv = MoveMap::make();
         let base = info.start;
