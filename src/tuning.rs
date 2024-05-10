@@ -19,6 +19,9 @@ pub enum Interval {
     MinorThird,
     MajorThird,
     PerfectFourth,
+    // In 12-EDO, these two are the same, but they differ in other tunings.
+    AugmentedFourth,
+    DimishedFifth,
     PerfectFifth,
 }
 
@@ -77,8 +80,8 @@ pub static EDO12: Edo = Edo {
     flat_names: EDO12_FLAT_NAMES.as_slice(),
 };
 
-static EDO12_INTERVALS: [isize; 6] = [
-    1, 2, 3, 4, 5, 7,
+static EDO12_INTERVALS: [isize; 8] = [
+    1, 2, 3, 4, 5, 6, 6, 7,
 ];
 
 static EDO12_SHARP_NAMES: [&'static str; 12] = [
@@ -120,8 +123,8 @@ pub static EDO19: Edo = Edo {
     flat_names: EDO19_FLAT_NAMES.as_slice(),
 };
 
-static EDO19_INTERVALS: [isize; 6] = [
-    2, 3, 5, 6, 8, 11,
+static EDO19_INTERVALS: [isize; 8] = [
+    2, 3, 5, 6, 8, 9, 10, 11,
 ];
 
 static EDO19_SHARP_NAMES: [&'static str; 19] = [
@@ -177,8 +180,8 @@ pub static EDO31: Edo = Edo {
     flat_names: EDO31_NAMES.as_slice(),
 };
 
-static EDO31_INTERVALS: [isize; 6] = [
-    3, 5, 8, 10, 13, 18,
+static EDO31_INTERVALS: [isize; 8] = [
+    3, 5, 8, 10, 13, 15, 16, 18,
 ];
 
 static EDO31_NAMES: [&'static str; 31] = [
