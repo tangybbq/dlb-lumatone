@@ -1,7 +1,7 @@
 //! Lumatone SVG mapping generation.
 
 use anyhow::Result;
-use svg::{node::element::{path::Data, Path}, Document};
+use svg::{node::element::{path::Data, Path, Style, Text}, Document};
 use std::f32::consts;
 
 // The Lumatone keyboard consists of a regular grid of hexagons, alternate rows
@@ -11,7 +11,8 @@ use std::f32::consts;
 const SPACING: f32 = 10.0;
 
 /// The overall rotation of the grid.  I'm not sure why this needs a factor of 2, and this still doesn't seem quite right.
-const TILT: f32 = 8.948_f32 * 2.0 / 360.0 * (2.0 * consts::PI);
+// const TILT: f32 = 8.948_f32 * 2.0 / 360.0 * (2.0 * consts::PI);
+const TILT: f32 = 16.0 / 360.0 * (2.0 * consts::PI);
 // const TILT: f32 = 0.0;
 // Note that to_radians() is not currently const.
 
@@ -29,9 +30,15 @@ impl SvgOut {
         let mut document = Document::new()
             .set("viewBox", (-20, -20, 36.0 * SPACING, 20.0 * SPACING));
 
+        document = document.add(Style::new(
+            r".black { font: 3px serif; }"
+            ));
+
         for (y, &(x0, xlen)) in SIZES.iter().enumerate() {
             for x in x0..x0 + xlen {
+                let label = format!("{},{}", x, y);
                 document = document.add(self.make_hex(x, y as u32));
+                document = document.add(self.make_text(x, y as u32, &label))
             }
         }
 
@@ -64,6 +71,17 @@ impl SvgOut {
             .set("stroke", "black")
             .set("stroke-width", 0.3)
             .set("d", data)
+    }
+
+    /// Generate a text element labeling a given box.
+    fn make_text(&self, x: u32, y: u32, text: &str) -> Text {
+        let (x, y) = self.coord(x, y);
+        Text::new(text)
+            .set("class", "black")
+            .set("x", x)
+            .set("y", y)
+            .set("text-anchor", "middle")
+            .set("dominant-baseline", "middle")
     }
 
     /// Given a coordinate, return the X and Y coordinates of that in SVG space.
