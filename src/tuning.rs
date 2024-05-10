@@ -3,13 +3,16 @@
 //! Manage tuning systems, and the various ways that they deal with names of
 //! notes, and midi note/channel numbers.
 
+use crate::lumatone::RGB8;
+
 #[derive(Copy, Clone, Default, Debug, Eq, PartialEq, Ord, PartialOrd)]
 pub struct MidiNote {
-    channel: u8,
-    note: u8,
+    pub channel: u8,
+    pub note: u8,
 }
 
 /// A few intervals that are used for building keyboards.
+#[derive(Debug, Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
 pub enum Interval {
     MinorSecond,
     MajorSecond,
@@ -35,6 +38,9 @@ pub trait Tuning {
     /// doesn't make sense, and the implementer should define their own
     /// `interval` method.
     fn get_steps(&self, interval: Interval) -> isize;
+
+    /// Guess a good color for this particular note.
+    fn color(&self, note: MidiNote) -> RGB8;
 }
 
 /// A general Equal division of the octave.
@@ -131,6 +137,30 @@ impl Tuning for Edo {
         let pitch = pitch % (self.octave as isize);
         let names = if sharp { self.sharp_names } else { self.flat_names };
         format!("{}{}", names[pitch as usize], octave)
+    }
+
+    /// To start with, just base the color on the length of the note, with a
+    /// special case for C4.
+    fn color(&self, note: MidiNote) -> RGB8 {
+        let name = self.name(note, true);
+        if name == "C4" {
+            return RGB8::new(150, 150, 192);
+        }
+        // Match names that start with 'C', but aren't accidentals.
+        let mut iter = name.chars();
+        if let Some(ch) = iter.next() {
+            if ch == 'C' {
+                if let Some(ch) = iter.next() {
+                    if ch == '-' || ch.is_digit(10) {
+                        return RGB8::new(192, 192, 130);
+                    }
+                }
+            }
+        }
+        if name.len() == 2 {
+            return RGB8::new(130, 130, 192);
+        }
+        RGB8::new(192, 130, 130)
     }
 }
 
