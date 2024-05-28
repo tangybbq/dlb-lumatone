@@ -30,6 +30,21 @@ static SPLIT_FILL: &'static [FillInfo] = &[
     },
 ];
 
+// Similar to the SPLIT_FILL above, but with everything shifted to the left so
+// that sharps are easier to get to.
+static SPLIT_FILL_SHARP: &'static [FillInfo] = &[
+    FillInfo {
+        left: 6,
+        right: 10,
+        start: KeyIndex { group: 3, key: 38 },
+    },
+    FillInfo {
+        left: 5,
+        right: 11,
+        start: KeyIndex { group: 0, key: 24 },
+    },
+];
+
 static WIDE_FILL: &'static [FillInfo] = &[
     FillInfo {
         left: 16,
@@ -57,6 +72,12 @@ static LTNS: &'static [Ltn] = &[
         fills: SPLIT_FILL,
         layout: &WICKI_HAYDEN,
         name: "dlb-edo31-wicki-hayden-split",
+    },
+    Ltn {
+        tuning: &EDO31,
+        fills: SPLIT_FILL_SHARP,
+        layout: &WICKI_HAYDEN,
+        name: "dlb-edo31-sharp-wicki-hayden-split",
     },
     Ltn {
         tuning: &EDO31,
