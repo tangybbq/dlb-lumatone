@@ -1,7 +1,7 @@
 use std::fs::create_dir;
 
 use anyhow::Result;
-use microtone::{lumatone::{FillInfo, KeyIndex, Keyboard, Layout, HARMONIC_TABLE, WICKI_HAYDEN}, tuning::{Tuning, EDO12, EDO19, EDO31}};
+use microtone::{lumatone::{FillInfo, KeyIndex, Keyboard, Layout, HARMONIC_TABLE, WICKI_HAYDEN}, tuning::{Tuning, EDO12, EDO19, EDO31, EDO53}};
 
 // An ltn to generate.  For each, we generate an ltn, and a svg showing the
 // layout.
@@ -120,6 +120,12 @@ static LTNS: &'static [Ltn] = &[
         fills: WIDE_FILL,
         layout: &HARMONIC_TABLE,
         name: "dlb-edo31-harmonic-wide",
+    },
+    Ltn {
+        tuning: &EDO53,
+        fills: WIDE_FILL,
+        layout: &WICKI_HAYDEN,
+        name: "dlb-edo53-wicki-hayden",
     },
 ];
 

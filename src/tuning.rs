@@ -218,6 +218,97 @@ static EDO31_NAMES: [&'static str; 31] = [
     "B♯",
 ];
 
+pub static EDO53: Edo = Edo {
+    octave: 53,
+    channel_octaves: Some(1),
+    middle_c: MidiNote { channel: 4, note: 1 },
+    intervals: EDO53_INTERVALS.as_slice(),
+    sharp_names: EDO53_NAMES.as_slice(),
+    flat_names: EDO53_NAMES.as_slice(),
+};
+
+static EDO53_INTERVALS: [isize; 8] = [
+    // m2
+    4,
+    // M2
+    9,
+    // m3
+    13,
+    // M3
+    18,
+    // P4
+    22,
+    // Aug4
+    25, // ??
+    // Dim5
+    25,
+    // P5
+    31,
+];
+
+static EDO53_NAMES: [&'static str; 53] = [
+    // 0, C
+    "C",
+    "^C",
+    "^^C",
+    "vvC♯",
+    "D♭",
+    "C♯",
+    "^^D♭",
+    "vvD",
+    "vD",
+    // 9, D
+    "D",
+    "^D",
+    "^^D",
+    "vvD♯",
+    "E♭",
+    "D♯",
+    "^^E♭",
+    "vvE",
+    "vE",
+    // 18, E
+    "E",
+    "^E",
+    "^^E", // "vvF",
+    "vF",
+    // 22, F
+    "F",
+    "^F",
+    "^^F",
+    "vvF♯",
+    "G♭",
+    "F♯",
+    "^^G♭",
+    "vvG",
+    "vG",
+    // 31, G
+    "G",
+    "^G",
+    "^^G",
+    "vvG♯",
+    "A♭",
+    "G♯",
+    "^^A♭",
+    "vvA",
+    "vA",
+    // 40, A
+    "A",
+    "^A",
+    "^^A",
+    "vvA♯",
+    "B♭",
+    "A♯",
+    "^^B♭",
+    "vvB",
+    "vB",
+    // 49, B
+    "B",
+    "^B",
+    "^^B", // "vvC",
+    "vC",
+];
+
 impl Tuning for Edo {
     fn get_steps(&self, interval: Interval) -> isize {
         self.intervals[interval as usize]
@@ -294,6 +385,30 @@ impl Tuning for Edo {
         }
         if name.len() == 2 {
             return RGB8::new(65, 65, 192);
+        }
+
+        // Pick some additional colors for the up/down variants.
+        let digits: &[_] = &['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+        let stripped = name.trim_end_matches(digits);
+        if name.starts_with("^^") {
+            if stripped.ends_with("♭") {
+                return RGB8::new(192, 65, 192);
+            } else {
+                return RGB8::new(192, 169, 70);
+            }
+        }
+        if name.starts_with("vv") {
+            if stripped.ends_with("♯") {
+                return RGB8::new(131, 117, 192);
+            } else {
+                return RGB8::new(192, 117, 67);
+            }
+        }
+        if name.starts_with("^") {
+            return RGB8::new(65, 192, 65);
+        }
+        if name.starts_with("v") {
+            return RGB8::new(85, 200, 192);
         }
 
         // The unusual accidentals are a bit out of place in 31, so give them
