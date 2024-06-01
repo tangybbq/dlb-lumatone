@@ -53,6 +53,14 @@ static WIDE_FILL: &'static [FillInfo] = &[
     },
 ];
 
+static WIDE_FILL_DN1: &'static [FillInfo] = &[
+    FillInfo {
+        left: 16,
+        right: 16,
+        start: KeyIndex { group: 2, key: 27 },
+    },
+];
+
 // All of the supported LTNS.
 static LTNS: &'static [Ltn] = &[
     Ltn {
@@ -126,6 +134,12 @@ static LTNS: &'static [Ltn] = &[
         fills: WIDE_FILL,
         layout: &WICKI_HAYDEN,
         name: "dlb-edo53-wicki-hayden",
+    },
+    Ltn {
+        tuning: &EDO53,
+        fills: WIDE_FILL_DN1,
+        layout: &WICKI_HAYDEN,
+        name: "dlb-edo53-dn1-wicki-hayden",
     },
 ];
 
