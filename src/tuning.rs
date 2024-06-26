@@ -114,6 +114,59 @@ static EDO12_FLAT_NAMES: [&'static str; 12] = [
     "B",
 ];
 
+pub static EDO17: Edo = Edo {
+    octave: 17,
+    channel_octaves: Some(60),
+    middle_c: MidiNote { channel: 4, note: 60 },
+    intervals: EDO17_INTERVALS.as_slice(),
+    sharp_names: EDO17_SHARP_NAMES.as_slice(),
+    flat_names: EDO17_FLAT_NAMES.as_slice(),
+};
+
+static EDO17_INTERVALS: [isize; 8] = [
+    1, 3, 4, 6, 7, 9, 8, 10,
+];
+
+static EDO17_SHARP_NAMES: [&'static str; 17] = [
+    "C",
+    "D♭",
+    "C♯",
+    "D",
+    "E♭",
+    "D♯",
+    "E",
+    "F",
+    "G♭",
+    "F♯",
+    "G",
+    "A♭",
+    "G♯",
+    "A",
+    "B♭",
+    "A♯",
+    "B",
+];
+
+static EDO17_FLAT_NAMES: [&'static str; 17] = [
+    "C",
+    "D♭",
+    "C♯",
+    "D",
+    "E♭",
+    "D♯",
+    "E",
+    "F",
+    "G♭",
+    "F♯",
+    "G",
+    "A♭",
+    "G♯",
+    "A",
+    "B♭",
+    "A♯",
+    "B",
+];
+
 pub static EDO19: Edo = Edo {
     octave: 19,
     channel_octaves: Some(60),
