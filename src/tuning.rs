@@ -407,6 +407,7 @@ impl Tuning for Edo {
             let octave = note.channel;
             let names = if sharp { self.sharp_names } else { self.flat_names };
             format!("{}{}", names[pitch as usize], octave)
+            // format!("{}-{}", octave, pitch)
         } else {
             // We assume that Middle C is C-4.
             let pitch = note.note as isize - self.middle_c.note as isize;
