@@ -13,7 +13,7 @@ use std::{collections::BTreeMap, path::Path};
 
 use anyhow::Result;
 
-use crate::tuning::{IntervalStep, Tuning};
+use crate::tuning::{Interval, IntervalDirection, IntervalStep, Tuning};
 
 use self::fill::Filler;
 
@@ -452,21 +452,21 @@ impl Keyboard {
 /// general, at least two of the generators should be relatively prime to the
 /// scale size, and the third generator is defined by the other two.
 pub struct Layout {
-    right: IntervalStep,
-    up_left: IntervalStep,
-    up_right: IntervalStep,
+    right: Interval,
+    up_left: Interval,
+    up_right: Interval,
 }
 
 pub static WICKI_HAYDEN: Layout = Layout {
-    right: IntervalStep::MajorSecond,
-    up_left: IntervalStep::PerfectFourth,
-    up_right: IntervalStep::PerfectFifth,
+    right: Interval::new(IntervalStep::MajorSecond, IntervalDirection::Up),
+    up_left: Interval::new(IntervalStep::PerfectFourth, IntervalDirection::Up),
+    up_right: Interval::new(IntervalStep::PerfectFifth, IntervalDirection::Up),
 };
 
 pub static HARMONIC_TABLE: Layout = Layout {
-    right: IntervalStep::MajorThird,
-    up_left: IntervalStep::MinorThird,
-    up_right: IntervalStep::PerfectFifth,
+    right: Interval::new(IntervalStep::MajorThird, IntervalDirection::Up),
+    up_left: Interval::new(IntervalStep::MinorThird, IntervalDirection::Up),
+    up_right: Interval::new(IntervalStep::PerfectFifth, IntervalDirection::Up),
 };
 
 /// Parameters needed to fill a layout.

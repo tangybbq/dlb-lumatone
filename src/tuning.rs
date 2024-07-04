@@ -32,6 +32,15 @@ pub enum IntervalDirection {
     Down,
 }
 
+impl IntervalDirection {
+    pub fn flip(self) -> IntervalDirection {
+        match self {
+            IntervalDirection::Up => IntervalDirection::Down,
+            IntervalDirection::Down => IntervalDirection::Up,
+        }
+    }
+}
+
 /// An Interval itself is a step and direction.
 #[derive(Copy, Clone, Debug, Eq, PartialEq)]
 pub struct Interval {
@@ -40,13 +49,21 @@ pub struct Interval {
 }
 
 impl Interval {
-    pub fn new(step: IntervalStep, direction: IntervalDirection) -> Interval {
+    pub const fn new(step: IntervalStep, direction: IntervalDirection) -> Interval {
         Interval { step, direction }
     }
 
     /// Is this an "up" interval.
     pub fn is_up(self) -> bool {
         self.direction == IntervalDirection::Up
+    }
+
+    /// Flip this interval, so that up and down are reversed.
+    pub fn flip(self) -> Interval {
+        Interval {
+            step: self.step,
+            direction: self.direction.flip(),
+        }
     }
 }
 
