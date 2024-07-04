@@ -1,7 +1,7 @@
 use std::fs::create_dir;
 
 use anyhow::Result;
-use microtone::{lumatone::{FillInfo, KeyIndex, Keyboard, Layout, HARMONIC_TABLE, WICKI_HAYDEN}, tuning::{Tuning, EDO12, EDO17, EDO19, EDO31, EDO41, EDO53}};
+use microtone::{lumatone::{FillInfo, KeyIndex, Keyboard, Layout, BOSANQUET, HARMONIC_TABLE, WICKI_HAYDEN}, tuning::{Tuning, EDO12, EDO17, EDO19, EDO31, EDO41, EDO53}};
 
 // An ltn to generate.  For each, we generate an ltn, and a svg showing the
 // layout.
@@ -70,10 +70,22 @@ static LTNS: &'static [Ltn] = &[
         name: "dlb-edo12-wicki-hayden-split",
     },
     Ltn {
+        tuning: &EDO12,
+        fills: WIDE_FILL_DN1,
+        layout: &BOSANQUET,
+        name: "dlb-edo12-bosanquet",
+    },
+    Ltn {
         tuning: &EDO19,
         fills: SPLIT_FILL,
         layout: &WICKI_HAYDEN,
         name: "dlb-edo19-wicki-hayden-split",
+    },
+    Ltn {
+        tuning: &EDO19,
+        fills: WIDE_FILL_DN1,
+        layout: &BOSANQUET,
+        name: "dlb-edo19-bosanquet",
     },
     Ltn {
         tuning: &EDO17,
@@ -98,6 +110,12 @@ static LTNS: &'static [Ltn] = &[
         fills: WIDE_FILL,
         layout: &WICKI_HAYDEN,
         name: "dlb-edo31-wicki-hayden-wide",
+    },
+    Ltn {
+        tuning: &EDO31,
+        fills: WIDE_FILL_DN1,
+        layout: &BOSANQUET,
+        name: "dlb-edo31-bosanquet",
     },
     Ltn {
         tuning: &EDO41,
@@ -152,6 +170,12 @@ static LTNS: &'static [Ltn] = &[
         fills: WIDE_FILL_DN1,
         layout: &WICKI_HAYDEN,
         name: "dlb-edo53-dn1-wicki-hayden",
+    },
+    Ltn {
+        tuning: &EDO53,
+        fills: WIDE_FILL_DN1,
+        layout: &BOSANQUET,
+        name: "dlb-edo53-bosanquet",
     },
 ];
 

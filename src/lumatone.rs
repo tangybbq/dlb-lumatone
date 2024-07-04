@@ -469,6 +469,12 @@ pub static HARMONIC_TABLE: Layout = Layout {
     up_right: Interval::new(IntervalStep::PerfectFifth, IntervalDirection::Up),
 };
 
+pub static BOSANQUET: Layout = Layout {
+    right: Interval::new(IntervalStep::MajorSecond, IntervalDirection::Up),
+    up_left: Interval::new(IntervalStep::MinorSecond, IntervalDirection::Down),
+    up_right: Interval::new(IntervalStep::AugUnison, IntervalDirection::Up),
+};
+
 /// Parameters needed to fill a layout.
 pub struct FillInfo {
     // How many places to move to the left.
