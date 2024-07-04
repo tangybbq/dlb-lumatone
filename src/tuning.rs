@@ -14,6 +14,7 @@ pub struct MidiNote {
 /// A few intervals that are used for building keyboards.
 #[derive(Debug, Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
 pub enum IntervalStep {
+    AugUnison,
     MinorSecond,
     MajorSecond,
     MinorThird,
@@ -122,8 +123,8 @@ pub static EDO12: Edo = Edo {
     flat_names: EDO12_FLAT_NAMES.as_slice(),
 };
 
-static EDO12_INTERVALS: [isize; 8] = [
-    1, 2, 3, 4, 5, 6, 6, 7,
+static EDO12_INTERVALS: [isize; 9] = [
+    1, 1, 2, 3, 4, 5, 6, 6, 7,
 ];
 
 static EDO12_SHARP_NAMES: [&'static str; 12] = [
@@ -165,8 +166,8 @@ pub static EDO17: Edo = Edo {
     flat_names: EDO17_FLAT_NAMES.as_slice(),
 };
 
-static EDO17_INTERVALS: [isize; 8] = [
-    1, 3, 4, 6, 7, 9, 8, 10,
+static EDO17_INTERVALS: [isize; 9] = [
+    2, 1, 3, 4, 6, 7, 9, 8, 10,
 ];
 
 static EDO17_SHARP_NAMES: [&'static str; 17] = [
@@ -218,8 +219,8 @@ pub static EDO19: Edo = Edo {
     flat_names: EDO19_FLAT_NAMES.as_slice(),
 };
 
-static EDO19_INTERVALS: [isize; 8] = [
-    2, 3, 5, 6, 8, 9, 10, 11,
+static EDO19_INTERVALS: [isize; 9] = [
+    1, 2, 3, 5, 6, 8, 9, 10, 11,
 ];
 
 static EDO19_SHARP_NAMES: [&'static str; 19] = [
@@ -275,8 +276,8 @@ pub static EDO31: Edo = Edo {
     flat_names: EDO31_NAMES.as_slice(),
 };
 
-static EDO31_INTERVALS: [isize; 8] = [
-    3, 5, 8, 10, 13, 15, 16, 18,
+static EDO31_INTERVALS: [isize; 9] = [
+    2, 3, 5, 8, 10, 13, 15, 16, 18,
 ];
 
 static EDO31_NAMES: [&'static str; 31] = [
@@ -322,8 +323,8 @@ pub static EDO41: Edo = Edo {
     flat_names: EDO41_NAMES.as_slice(),
 };
 
-static EDO41_INTERVALS: [isize; 8] = [
-    3, 7, 10, 14, 17, 21, 20, 24,
+static EDO41_INTERVALS: [isize; 9] = [
+    4, 3, 7, 10, 14, 17, 21, 20, 24,
 ];
 
 static EDO41_NAMES: [&'static str; 41] = [
@@ -379,7 +380,9 @@ pub static EDO53: Edo = Edo {
     flat_names: EDO53_NAMES.as_slice(),
 };
 
-static EDO53_INTERVALS: [isize; 8] = [
+static EDO53_INTERVALS: [isize; 9] = [
+    // Aug1
+    5,
     // m2
     4,
     // M2
