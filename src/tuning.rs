@@ -13,7 +13,7 @@ pub struct MidiNote {
 
 /// A few intervals that are used for building keyboards.
 #[derive(Debug, Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
-pub enum Interval {
+pub enum IntervalStep {
     MinorSecond,
     MajorSecond,
     MinorThird,
@@ -25,13 +25,38 @@ pub enum Interval {
     PerfectFifth,
 }
 
+/// Which direction does an interval move in?
+#[derive(Copy, Clone, Debug, Eq, PartialEq)]
+pub enum IntervalDirection {
+    Up,
+    Down,
+}
+
+/// An Interval itself is a step and direction.
+#[derive(Copy, Clone, Debug, Eq, PartialEq)]
+pub struct Interval {
+    step: IntervalStep,
+    direction: IntervalDirection,
+}
+
+impl Interval {
+    pub fn new(step: IntervalStep, direction: IntervalDirection) -> Interval {
+        Interval { step, direction }
+    }
+
+    /// Is this an "up" interval.
+    pub fn is_up(self) -> bool {
+        self.direction == IntervalDirection::Up
+    }
+}
+
 /// A tuning system, at least as much information as is needed to produce a
 /// keyboard layout and midi mapping.  Right now, the midi mapping is definitive.
 pub trait Tuning {
     /// Adjust a note by an interval. `up` indicates a higher pitch when true.
     /// None indicates either the note is out of range, or the interval doesn't
     /// make sense with this tuning.
-    fn interval(&self, note: MidiNote, interval: Interval, up: bool) -> Option<MidiNote>;
+    fn interval(&self, note: MidiNote, interval: Interval) -> Option<MidiNote>;
 
     /// Return a nice name for this note. The 'sharp' hint is for tuning systems
     /// that have enharmonic sharps and flats, as a suggestion of which name to
@@ -42,7 +67,7 @@ pub trait Tuning {
     /// calculated just based on a number of steps. This should be None if this
     /// doesn't make sense, and the implementer should define their own
     /// `interval` method.
-    fn get_steps(&self, interval: Interval) -> isize;
+    fn get_steps(&self, interval: IntervalStep) -> isize;
 
     /// Guess a good color for this particular note.
     fn color(&self, note: MidiNote, sharp: bool) -> RGB8;
@@ -420,17 +445,17 @@ static EDO53_NAMES: [&'static str; 53] = [
 ];
 
 impl Tuning for Edo {
-    fn get_steps(&self, interval: Interval) -> isize {
+    fn get_steps(&self, interval: IntervalStep) -> isize {
         self.intervals[interval as usize]
     }
 
-    fn interval(&self, note: MidiNote, interval: Interval, up: bool) -> Option<MidiNote> {
+    fn interval(&self, note: MidiNote, interval: Interval) -> Option<MidiNote> {
         if let Some(bias) = self.channel_octaves {
             let bias = bias as usize;
 
             // Bias everything by 100 octaves.  This shouldn't be a problem even
             // with very fine tunings.
-            let steps = self.get_steps(interval);
+            let steps = self.get_steps(interval.step);
             if steps < 0 {
                 // We don't support tunings with negative intervals.
                 todo!();
@@ -438,7 +463,7 @@ impl Tuning for Edo {
             let steps = steps as usize;
             let pitch = (100 + note.channel as usize) * self.octave as usize
                 + (note.note as usize - bias);
-            let pitch = if up { pitch + steps } else { pitch - steps };
+            let pitch = if interval.is_up() { pitch + steps } else { pitch - steps };
             let octave = pitch / self.octave;
             if octave < 100 || octave > 227 {
                 println!("Out of bound octave: {}", octave);
@@ -448,9 +473,9 @@ impl Tuning for Edo {
             let pitch = pitch % self.octave + bias;
             Some(MidiNote { channel: octave as u8, note: pitch as u8, })
         } else {
-            let steps = self.get_steps(interval);
+            let steps = self.get_steps(interval.step);
             let steps = u8::try_from(steps).ok()?;
-            let pitch = if up { note.note.checked_add(steps)? } else { note.note.checked_sub(steps)? };
+            let pitch = if interval.is_up() { note.note.checked_add(steps)? } else { note.note.checked_sub(steps)? };
             if pitch > 127 {
                 return None;
             }

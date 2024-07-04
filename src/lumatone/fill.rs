@@ -4,7 +4,7 @@
 
 use std::collections::VecDeque;
 
-use crate::tuning::{MidiNote, Tuning};
+use crate::tuning::{Interval, IntervalDirection, MidiNote, Tuning};
 
 use super::{Dir, FillInfo, KeyIndex, KeyInfo, Keyboard, Layout, MoveMap};
 
@@ -216,15 +216,15 @@ impl Phase {
 
     /// Move this note, according to the given direction.
     pub fn note_move(self, filler: &Filler, note: MidiNote, card: Cardinal) -> Option<MidiNote> {
-        let (interval, up) = match self.dir(card) {
-            Dir::Left => (filler.layout.right, false),
-            Dir::Right => (filler.layout.right, true),
-            Dir::UpLeft => (filler.layout.up_left, true),
-            Dir::UpRight => (filler.layout.up_right, true),
-            Dir::DownLeft => (filler.layout.up_right, false),
-            Dir::DownRight => (filler.layout.up_left, false),
+        let interval = match self.dir(card) {
+            Dir::Left => Interval::new(filler.layout.right, IntervalDirection::Down),
+            Dir::Right => Interval::new(filler.layout.right, IntervalDirection::Up),
+            Dir::UpLeft => Interval::new(filler.layout.up_left, IntervalDirection::Up),
+            Dir::UpRight => Interval::new(filler.layout.up_right, IntervalDirection::Up),
+            Dir::DownLeft => Interval::new(filler.layout.up_right, IntervalDirection::Down),
+            Dir::DownRight => Interval::new(filler.layout.up_left, IntervalDirection::Down),
         };
-        filler.tuning.interval(note, interval, up)
+        filler.tuning.interval(note, interval)
     }
 
     /// Return the complement of this phase.
