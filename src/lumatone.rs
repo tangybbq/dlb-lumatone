@@ -159,8 +159,18 @@ impl Keyboard {
                 }
                 match self.get(key) {
                     Some(info) => {
-                        // let label = format!("{},{}", key.group, key.key);
-                        writer.add(x, y as u32, info.color, &info.label);
+                        if true {
+                            let label = format!("{} {}", info.note as isize - 1, &info.label);
+                            writer.add(x, y as u32, info.color, &label);
+                        } else if false {
+                            let label = format!("{},{},{}", /*info.label, */
+                                                x as i32 - 14,
+                                                y as i32 - 11,
+                                                info.note as isize - 60);
+                            writer.add(x, y as u32, info.color, &label);
+                        } else {
+                            writer.add(x, y as u32, info.color, &info.label);
+                        }
                     }
                     None => {
                         writer.add(x, y as u32, RGB8::white(), "");
