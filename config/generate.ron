@@ -35,6 +35,8 @@
         (tuning: "edo31", layout: "dlb1",         fill: "wide",        name: "dlb-edo31-dlb1-wide"),
         (tuning: "edo31", layout: "bosanquet",    fill: "wide-dn1",    name: "dlb-edo31-bosanquet"),
         (tuning: "edo41", layout: "wicki-hayden", fill: "wide",        name: "dlb-edo41-wicki-hayden-wide"),
+        (tuning: "edo41", layout: "dlb1",         fill: "wide",        name: "dlb-edo41-dlb1-wide"),
+        (tuning: "edo41", layout: "dlb1",         fill: "split",       name: "dlb-edo41-dlb1-split"),
         (tuning: "edo12", layout: "harmonic",     fill: "split",       name: "dlb-edo12-harmonic-split"),
         (tuning: "edo12", layout: "harmonic",     fill: "wide",        name: "dlb-edo12-harmonic-wide"),
         (tuning: "edo19", layout: "harmonic",     fill: "split",       name: "dlb-edo19-harmonic-split"),
