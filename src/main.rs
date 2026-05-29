@@ -1,7 +1,7 @@
 use std::fs::create_dir;
 
 use anyhow::Result;
-use microtone::{lumatone::{FillInfo, KeyIndex, Keyboard, Layout, BOSANQUET, HARMONIC_TABLE, WICKI_HAYDEN}, tuning::{Tuning, EDO12, EDO17, EDO19, EDO31, EDO41, EDO53}};
+use microtone::{lumatone::{FillInfo, KeyIndex, Keyboard, Layout, BOSANQUET, DLB_WICKI1, HARMONIC_TABLE, WICKI_HAYDEN}, tuning::{Tuning, EDO12, EDO17, EDO19, EDO31, EDO41, EDO53}};
 
 // An ltn to generate.  For each, we generate an ltn, and a svg showing the
 // layout.
@@ -113,6 +113,18 @@ static LTNS: &'static [Ltn] = &[
     },
     Ltn {
         tuning: &EDO31,
+        fills: SPLIT_FILL,
+        layout: &DLB_WICKI1,
+        name: "dlb-edo31-dlb1-split",
+    },
+    Ltn {
+        tuning: &EDO31,
+        fills: WIDE_FILL,
+        layout: &DLB_WICKI1,
+        name: "dlb-edo31-dlb1-wide",
+    },
+    Ltn {
+        tuning: &EDO31,
         fills: WIDE_FILL_DN1,
         layout: &BOSANQUET,
         name: "dlb-edo31-bosanquet",
@@ -158,6 +170,12 @@ static LTNS: &'static [Ltn] = &[
         fills: WIDE_FILL,
         layout: &HARMONIC_TABLE,
         name: "dlb-edo31-harmonic-wide",
+    },
+    Ltn {
+        tuning: &EDO53,
+        fills: WIDE_FILL,
+        layout: &DLB_WICKI1,
+        name: "dlb-edo53-dlb1",
     },
     Ltn {
         tuning: &EDO53,

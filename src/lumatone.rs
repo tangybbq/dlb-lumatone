@@ -473,6 +473,14 @@ pub static WICKI_HAYDEN: Layout = Layout {
     up_right: Interval::new(IntervalStep::PerfectFifth, IntervalDirection::Up),
 };
 
+/// A double-stack variant of Wicki-Hayden where the 5th is two rows up, and the row between
+/// contains neutral and other intervals.
+pub static DLB_WICKI1: Layout = Layout {
+    right: Interval::new(IntervalStep::MajorSecond, IntervalDirection::Up),
+    up_left: Interval::new(IntervalStep::NeutralSecond, IntervalDirection::Up),
+    up_right: Interval::new(IntervalStep::NeutralThird, IntervalDirection::Up),
+};
+
 pub static HARMONIC_TABLE: Layout = Layout {
     right: Interval::new(IntervalStep::MajorThird, IntervalDirection::Up),
     up_left: Interval::new(IntervalStep::MinorThird, IntervalDirection::Up),

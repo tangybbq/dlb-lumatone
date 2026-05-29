@@ -24,6 +24,9 @@ pub enum IntervalStep {
     AugmentedFourth,
     DimishedFifth,
     PerfectFifth,
+    // If these are valid in the tuning, otherwise they are just a regular Major Second and Third.
+    NeutralSecond,
+    NeutralThird,
 }
 
 /// Which direction does an interval move in?
@@ -123,8 +126,8 @@ pub static EDO12: Edo = Edo {
     flat_names: EDO12_FLAT_NAMES.as_slice(),
 };
 
-static EDO12_INTERVALS: [isize; 9] = [
-    1, 1, 2, 3, 4, 5, 6, 6, 7,
+static EDO12_INTERVALS: [isize; 11] = [
+    1, 1, 2, 3, 4, 5, 6, 6, 7, 2, 4,
 ];
 
 static EDO12_SHARP_NAMES: [&'static str; 12] = [
@@ -166,8 +169,8 @@ pub static EDO17: Edo = Edo {
     flat_names: EDO17_FLAT_NAMES.as_slice(),
 };
 
-static EDO17_INTERVALS: [isize; 9] = [
-    2, 1, 3, 4, 6, 7, 9, 8, 10,
+static EDO17_INTERVALS: [isize; 11] = [
+    2, 1, 3, 4, 6, 7, 9, 8, 10, 3, 6,
 ];
 
 static EDO17_SHARP_NAMES: [&'static str; 17] = [
@@ -219,8 +222,8 @@ pub static EDO19: Edo = Edo {
     flat_names: EDO19_FLAT_NAMES.as_slice(),
 };
 
-static EDO19_INTERVALS: [isize; 9] = [
-    1, 2, 3, 5, 6, 8, 9, 10, 11,
+static EDO19_INTERVALS: [isize; 11] = [
+    1, 2, 3, 5, 6, 8, 9, 10, 11, 3, 6,
 ];
 
 static EDO19_SHARP_NAMES: [&'static str; 19] = [
@@ -276,8 +279,8 @@ pub static EDO31: Edo = Edo {
     flat_names: EDO31_NAMES.as_slice(),
 };
 
-static EDO31_INTERVALS: [isize; 9] = [
-    2, 3, 5, 8, 10, 13, 15, 16, 18,
+static EDO31_INTERVALS: [isize; 11] = [
+    2, 3, 5, 8, 10, 13, 15, 16, 18, 4, 9,
 ];
 
 static EDO31_NAMES: [&'static str; 31] = [
@@ -323,8 +326,8 @@ pub static EDO41: Edo = Edo {
     flat_names: EDO41_NAMES.as_slice(),
 };
 
-static EDO41_INTERVALS: [isize; 9] = [
-    4, 3, 7, 10, 14, 17, 21, 20, 24,
+static EDO41_INTERVALS: [isize; 11] = [
+    4, 3, 7, 10, 14, 17, 21, 20, 24, 5, 12,
 ];
 
 static EDO41_NAMES: [&'static str; 41] = [
@@ -380,7 +383,7 @@ pub static EDO53: Edo = Edo {
     flat_names: EDO53_NAMES.as_slice(),
 };
 
-static EDO53_INTERVALS: [isize; 9] = [
+static EDO53_INTERVALS: [isize; 11] = [
     // Aug1
     5,
     // m2
@@ -399,6 +402,11 @@ static EDO53_INTERVALS: [isize; 9] = [
     25,
     // P5
     31,
+    // N2
+    5, // EDO53 doesn't have a neutral, but dupmajor 2 and 3rd fall half way between the fourth and
+       // the fifth, so use them.
+    // N3
+    14,
 ];
 
 static EDO53_NAMES: [&'static str; 53] = [
