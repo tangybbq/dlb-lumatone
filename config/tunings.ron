@@ -1,0 +1,90 @@
+// Tuning definitions, keyed by name.
+//
+// Each tuning is an equal division of the octave (EDO):
+//   octave           number of steps per octave
+//   channel_octaves  Some(bias): the MIDI channel encodes the octave and C is
+//                    `bias`; None: plain MIDI note numbers
+//   middle_c         the MidiNote used as the fill origin
+//   color            named color scheme (see src/tuning.rs)
+//   intervals        named interval -> step count (only those the tuning defines)
+//   sharp_names      note names with sharp bias (length must equal `octave`)
+//   flat_names       optional flat-bias names; defaults to sharp_names
+{
+    "edo12": (
+        octave: 12,
+        channel_octaves: None,
+        middle_c: (channel: 1, note: 60),
+        color: "ups_downs",
+        intervals: [("Aug1",1),("m2",1),("M2",2),("m3",3),("M3",4),("P4",5),
+                    ("Aug4",6),("dim5",6),("P5",7),("N2",2),("N3",4)],
+        sharp_names: ["C","C♯","D","D♯","E","F","F♯","G","G♯","A","A♯","B"],
+        flat_names: Some(["C","D♭","D","E♭","E","F","G♭","G","A♭","A","B♭","B"]),
+    ),
+
+    "edo17": (
+        octave: 17,
+        channel_octaves: Some(60),
+        middle_c: (channel: 4, note: 60),
+        color: "ups_downs",
+        intervals: [("Aug1",2),("m2",1),("M2",3),("m3",4),("M3",6),("P4",7),
+                    ("Aug4",9),("dim5",8),("P5",10),("N2",3),("N3",6)],
+        sharp_names: ["C","D♭","C♯","D","E♭","D♯","E","F","G♭","F♯","G","A♭",
+                      "G♯","A","B♭","A♯","B"],
+    ),
+
+    "edo19": (
+        octave: 19,
+        channel_octaves: Some(60),
+        middle_c: (channel: 4, note: 60),
+        color: "ups_downs",
+        intervals: [("Aug1",1),("m2",2),("M2",3),("m3",5),("M3",6),("P4",8),
+                    ("Aug4",9),("dim5",10),("P5",11),("N2",3),("N3",6)],
+        sharp_names: ["C","C♯","D♭","D","D♯","E♭","E","E♯","F","F♯","G♭","G",
+                      "G♯","A♭","A","A♯","B♭","B","B♯"],
+        flat_names: Some(["C","C♯","D♭","D","D♯","E♭","E","F♭","F","F♯","G♭","G",
+                          "G♯","A♭","A","A♯","B♭","B","C♭"]),
+    ),
+
+    "edo31": (
+        octave: 31,
+        channel_octaves: Some(60),
+        middle_c: (channel: 4, note: 60),
+        color: "ups_downs",
+        intervals: [("Aug1",2),("m2",3),("M2",5),("m3",8),("M3",10),("P4",13),
+                    ("Aug4",15),("dim5",16),("P5",18),("N2",4),("N3",9)],
+        sharp_names: ["C","D𝄫","C♯","D♭","C𝄪","D","E𝄫","D♯","E♭","D𝄪","E","F♭",
+                      "E♯","F","G𝄫","F♯","G♭","F𝄪","G","A𝄫","G♯","A♭","G𝄪","A",
+                      "B𝄫","A♯","B♭","A𝄪","B","C♭","B♯"],
+    ),
+
+    "edo41": (
+        octave: 41,
+        channel_octaves: Some(60),
+        middle_c: (channel: 4, note: 60),
+        color: "ups_downs",
+        intervals: [("Aug1",4),("m2",3),("M2",7),("m3",10),("M3",14),("P4",17),
+                    ("Aug4",21),("dim5",20),("P5",24),("N2",5),("N3",12)],
+        sharp_names: ["C","^C","^^C","D♭","C♯","vvD","vD","D","^D","^^D","E♭","D♯",
+                      "vvE","vE","E","E","vF","F","^F","^^F","G♭","F♯","vvG","vG",
+                      "G","^G","^^G","A♭","G♯","vvA","vA","A","^A","^^A","B♭","A♯",
+                      "vvB","vB","B","^B","vC"],
+    ),
+
+    "edo53": (
+        octave: 53,
+        channel_octaves: Some(1),
+        middle_c: (channel: 4, note: 1),
+        // Aug4 (25) is approximate; EDO53 has no true neutral, so N2/N3 reuse
+        // the dup-major 2nd/3rd which fall halfway between the 4th and 5th.
+        intervals: [("Aug1",5),("m2",4),("M2",9),("m3",13),("M3",18),("P4",22),
+                    ("Aug4",25),("dim5",25),("P5",31),("N2",5),("N3",14)],
+        color: "ups_downs",
+        sharp_names: ["C","^C","^^C","vvC♯","D♭","C♯","^^D♭","vvD","vD",
+                      "D","^D","^^D","vvD♯","E♭","D♯","^^E♭","vvE","vE",
+                      "E","^E","^^E","vF",
+                      "F","^F","^^F","vvF♯","G♭","F♯","^^G♭","vvG","vG",
+                      "G","^G","^^G","vvG♯","A♭","G♯","^^A♭","vvA","vA",
+                      "A","^A","^^A","vvA♯","B♭","A♯","^^B♭","vvB","vB",
+                      "B","^B","^^B","vC"],
+    ),
+}

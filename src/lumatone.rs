@@ -12,6 +12,7 @@
 use std::{collections::BTreeMap, path::Path};
 
 use anyhow::Result;
+use serde::Deserialize;
 
 use crate::tuning::{Interval, IntervalDirection, IntervalStep, Tuning};
 
@@ -25,7 +26,7 @@ pub use svg::SvgOut;
 
 /// The lumatone itself represents the keys by a pair of numbers, the group, a
 /// number between 0 and 4, and the key itself, a number between 0 and 56.
-#[derive(Debug, Copy, Clone, Eq, PartialEq)]
+#[derive(Debug, Copy, Clone, Eq, PartialEq, Deserialize)]
 pub struct KeyIndex {
     /// Group across the keyboard.
     pub group: u8,
@@ -473,11 +474,12 @@ impl Generator {
         Generator::Named(Interval::new(step, direction))
     }
 
-    /// Resolve this generator to a signed step count for the given tuning.
-    fn steps(&self, tuning: &dyn Tuning) -> isize {
+    /// Resolve this generator to a signed step count, or Err with the interval
+    /// the tuning does not define.
+    fn try_steps(&self, tuning: &dyn Tuning) -> Result<isize, IntervalStep> {
         match self {
-            Generator::Named(iv) => tuning.interval_steps(*iv),
-            Generator::Steps(n) => *n,
+            Generator::Named(iv) => tuning.try_interval_steps(*iv).ok_or(iv.step()),
+            Generator::Steps(n) => Ok(*n),
         }
     }
 }
@@ -501,49 +503,35 @@ pub struct ResolvedLayout {
 
 impl Layout {
     /// Resolve the two specified axes to step counts and derive the third via
-    /// `up_right = up_left + right`.
-    pub fn resolve(&self, tuning: &dyn Tuning) -> ResolvedLayout {
-        match self {
+    /// `up_right = up_left + right`.  Err carries the interval the tuning does
+    /// not define.
+    pub fn try_resolve(&self, tuning: &dyn Tuning) -> Result<ResolvedLayout, IntervalStep> {
+        Ok(match self {
             Layout::RightUpLeft { right, up_left } => {
-                let right = right.steps(tuning);
-                let up_left = up_left.steps(tuning);
+                let right = right.try_steps(tuning)?;
+                let up_left = up_left.try_steps(tuning)?;
                 ResolvedLayout { right, up_left, up_right: right + up_left }
             }
             Layout::RightUpRight { right, up_right } => {
-                let right = right.steps(tuning);
-                let up_right = up_right.steps(tuning);
+                let right = right.try_steps(tuning)?;
+                let up_right = up_right.try_steps(tuning)?;
                 ResolvedLayout { right, up_left: up_right - right, up_right }
             }
             Layout::UpLeftUpRight { up_left, up_right } => {
-                let up_left = up_left.steps(tuning);
-                let up_right = up_right.steps(tuning);
+                let up_left = up_left.try_steps(tuning)?;
+                let up_right = up_right.try_steps(tuning)?;
                 ResolvedLayout { right: up_right - up_left, up_left, up_right }
             }
-        }
+        })
+    }
+
+    /// Resolve, panicking if an axis references an interval the tuning does not
+    /// define.  Callers rely on config validation having checked this first.
+    pub fn resolve(&self, tuning: &dyn Tuning) -> ResolvedLayout {
+        self.try_resolve(tuning)
+            .expect("layout references an interval the tuning does not define")
     }
 }
-
-pub static WICKI_HAYDEN: Layout = Layout::RightUpLeft {
-    right: Generator::named(IntervalStep::MajorSecond, IntervalDirection::Up),
-    up_left: Generator::named(IntervalStep::PerfectFourth, IntervalDirection::Up),
-};
-
-/// A double-stack variant of Wicki-Hayden where the 5th is two rows up, and the row between
-/// contains neutral and other intervals.  The derived up-right axis is the neutral third.
-pub static DLB_WICKI1: Layout = Layout::RightUpLeft {
-    right: Generator::named(IntervalStep::MajorSecond, IntervalDirection::Up),
-    up_left: Generator::named(IntervalStep::NeutralSecond, IntervalDirection::Up),
-};
-
-pub static HARMONIC_TABLE: Layout = Layout::RightUpLeft {
-    right: Generator::named(IntervalStep::MajorThird, IntervalDirection::Up),
-    up_left: Generator::named(IntervalStep::MinorThird, IntervalDirection::Up),
-};
-
-pub static BOSANQUET: Layout = Layout::RightUpLeft {
-    right: Generator::named(IntervalStep::MajorSecond, IntervalDirection::Up),
-    up_left: Generator::named(IntervalStep::MinorSecond, IntervalDirection::Down),
-};
 
 /// How thoroughly a resolved layout fills an octave of a given EDO.
 #[derive(Debug, Clone, Copy)]
@@ -590,6 +578,7 @@ fn gcd(a: usize, b: usize) -> usize {
 }
 
 /// Parameters needed to fill a layout.
+#[derive(Debug, Clone, Deserialize)]
 pub struct FillInfo {
     // How many places to move to the left.
     pub left: usize,
@@ -662,7 +651,18 @@ mod test {
     }
 
     use super::{coverage, Generator, Layout, ResolvedLayout};
-    use crate::tuning::{IntervalDirection, IntervalStep, EDO31};
+    use crate::tuning::{ColorScheme, Edo, IntervalDirection, IntervalStep, MidiNote};
+
+    /// A minimal edo31 with just the intervals these tests need.  Note tables
+    /// are empty because resolution/coverage never touch them.
+    fn edo31() -> Edo {
+        let mut intervals = std::collections::BTreeMap::new();
+        intervals.insert(IntervalStep::MajorSecond, 5);
+        intervals.insert(IntervalStep::PerfectFourth, 13);
+        intervals.insert(IntervalStep::PerfectFifth, 18);
+        Edo::new(31, Some(60), MidiNote { channel: 4, note: 60 },
+                 intervals, vec![], vec![], ColorScheme::by_name("ups_downs").unwrap())
+    }
 
     /// Every layout variant should derive the same third axis via
     /// `up_right = up_left + right`, regardless of which two are supplied.
@@ -673,9 +673,10 @@ mod test {
         let p5 = || Generator::named(IntervalStep::PerfectFifth, IntervalDirection::Up);
 
         // On edo31: M2 = 5, P4 = 13, P5 = 18.
-        let from_rl = Layout::RightUpLeft { right: m2(), up_left: p4() }.resolve(&EDO31);
-        let from_rr = Layout::RightUpRight { right: m2(), up_right: p5() }.resolve(&EDO31);
-        let from_ll = Layout::UpLeftUpRight { up_left: p4(), up_right: p5() }.resolve(&EDO31);
+        let edo = edo31();
+        let from_rl = Layout::RightUpLeft { right: m2(), up_left: p4() }.resolve(&edo);
+        let from_rr = Layout::RightUpRight { right: m2(), up_right: p5() }.resolve(&edo);
+        let from_ll = Layout::UpLeftUpRight { up_left: p4(), up_right: p5() }.resolve(&edo);
 
         for r in [&from_rl, &from_rr, &from_ll] {
             assert_eq!((r.right, r.up_left, r.up_right), (5, 13, 18));
@@ -689,7 +690,7 @@ mod test {
             right: Generator::Steps(5),
             up_left: Generator::Steps(13),
         }
-        .resolve(&EDO31);
+        .resolve(&edo31());
         assert_eq!((r.right, r.up_left, r.up_right), (5, 13, 18));
     }
 

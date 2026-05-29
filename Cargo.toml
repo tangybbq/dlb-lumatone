@@ -8,4 +8,6 @@ default-run = "microtone"
 [dependencies]
 anyhow = "1.0.83"
 regex = "1.10.4"
+ron = "0.12.1"
+serde = { version = "1.0.228", features = ["derive"] }
 svg = "0.17.0"

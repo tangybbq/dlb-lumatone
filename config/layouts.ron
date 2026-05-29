@@ -1,0 +1,34 @@
+// Layout definitions, keyed by name.
+//
+// A layout names exactly two of the three hex axes; the third is derived as
+// `up_right = up_left + right`.  Each axis is a generator:
+//   Named(interval: "P4")            a named interval, up
+//   Named(interval: "m2", dir: Down) a named interval, down
+//   Steps(13)                        a raw signed EDO step count
+{
+    // The classic Wicki-Hayden: whole tone across, fourth/fifth on the diagonals.
+    "wicki-hayden": RightUpLeft(
+        right:   Named(interval: "M2"),
+        up_left: Named(interval: "P4"),
+    ),
+
+    // Double-stack variant: the fifth is two rows up, neutral intervals between.
+    // The derived up-right axis is the neutral third.
+    "dlb1": RightUpLeft(
+        right:   Named(interval: "M2"),
+        up_left: Named(interval: "N2"),
+    ),
+
+    // Harmonic table / Tonnetz: major third across, minor third up-left, fifth
+    // derived up-right.
+    "harmonic": RightUpLeft(
+        right:   Named(interval: "M3"),
+        up_left: Named(interval: "m3"),
+    ),
+
+    // Bosanquet-Wilson: octaves run horizontally.
+    "bosanquet": RightUpLeft(
+        right:   Named(interval: "M2"),
+        up_left: Named(interval: "m2", dir: Down),
+    ),
+}

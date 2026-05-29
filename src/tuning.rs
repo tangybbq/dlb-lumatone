@@ -3,9 +3,14 @@
 //! Manage tuning systems, and the various ways that they deal with names of
 //! notes, and midi note/channel numbers.
 
+use std::collections::BTreeMap;
+use std::str::FromStr;
+
+use serde::Deserialize;
+
 use crate::lumatone::RGB8;
 
-#[derive(Copy, Clone, Default, Debug, Eq, PartialEq, Ord, PartialOrd)]
+#[derive(Copy, Clone, Default, Debug, Eq, PartialEq, Ord, PartialOrd, Deserialize)]
 pub struct MidiNote {
     pub channel: u8,
     pub note: u8,
@@ -29,9 +34,32 @@ pub enum IntervalStep {
     NeutralThird,
 }
 
+impl FromStr for IntervalStep {
+    type Err = String;
+
+    /// Parse the short interval names used in the config files.
+    fn from_str(s: &str) -> Result<Self, String> {
+        Ok(match s {
+            "Aug1" => IntervalStep::AugUnison,
+            "m2" => IntervalStep::MinorSecond,
+            "M2" => IntervalStep::MajorSecond,
+            "m3" => IntervalStep::MinorThird,
+            "M3" => IntervalStep::MajorThird,
+            "P4" => IntervalStep::PerfectFourth,
+            "Aug4" => IntervalStep::AugmentedFourth,
+            "dim5" => IntervalStep::DimishedFifth,
+            "P5" => IntervalStep::PerfectFifth,
+            "N2" => IntervalStep::NeutralSecond,
+            "N3" => IntervalStep::NeutralThird,
+            other => return Err(format!("unknown interval name: {:?}", other)),
+        })
+    }
+}
+
 /// Which direction does an interval move in?
-#[derive(Copy, Clone, Debug, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Default, Eq, PartialEq, Deserialize)]
 pub enum IntervalDirection {
+    #[default]
     Up,
     Down,
 }
@@ -55,6 +83,11 @@ pub struct Interval {
 impl Interval {
     pub const fn new(step: IntervalStep, direction: IntervalDirection) -> Interval {
         Interval { step, direction }
+    }
+
+    /// The interval step (without direction).
+    pub fn step(self) -> IntervalStep {
+        self.step
     }
 
     /// Is this an "up" interval.
@@ -87,6 +120,13 @@ pub trait Tuning {
         if interval.is_up() { steps } else { -steps }
     }
 
+    /// Resolve a named interval to a signed step count, or None if this tuning
+    /// does not define the interval.
+    fn try_interval_steps(&self, interval: Interval) -> Option<isize> {
+        let steps = self.try_get_steps(interval.step)?;
+        Some(if interval.is_up() { steps } else { -steps })
+    }
+
     /// Adjust a note by an interval. None indicates either the note is out of
     /// range, or the interval doesn't make sense with this tuning.
     fn interval(&self, note: MidiNote, interval: Interval) -> Option<MidiNote> {
@@ -98,17 +138,39 @@ pub trait Tuning {
     /// use.
     fn name(&self, note: MidiNote, sharp: bool) -> String;
 
-    /// For tunings where intervals are independ (the EDOs), interval can be
-    /// calculated just based on a number of steps. This should be None if this
-    /// doesn't make sense, and the implementer should define their own
-    /// `interval` method.
-    fn get_steps(&self, interval: IntervalStep) -> isize;
+    /// Step count for a named interval, or None if this tuning does not define
+    /// it.  This is the primitive; `get_steps` is the panicking convenience.
+    fn try_get_steps(&self, interval: IntervalStep) -> Option<isize>;
+
+    /// Step count for a named interval.  Panics if the interval is undefined;
+    /// callers on the generation path rely on config validation having checked
+    /// presence already.
+    fn get_steps(&self, interval: IntervalStep) -> isize {
+        self.try_get_steps(interval)
+            .expect("interval not defined for this tuning")
+    }
 
     /// Guess a good color for this particular note.
     fn color(&self, note: MidiNote, sharp: bool) -> RGB8;
 
     /// Return middle C for this tuning.
     fn middle_c(&self) -> MidiNote;
+}
+
+/// A named color scheme: a function mapping a note to a display color.  Tunings
+/// select one by name in the config, and the heuristic lives in Rust so it can
+/// be swapped or improved later (the current scheme is weak on large EDOs).
+#[derive(Copy, Clone)]
+pub struct ColorScheme(fn(&Edo, MidiNote, bool) -> RGB8);
+
+impl ColorScheme {
+    /// Resolve a color-scheme name to its implementation.
+    pub fn by_name(name: &str) -> Option<ColorScheme> {
+        match name {
+            "ups_downs" => Some(ColorScheme(ups_downs_color)),
+            _ => None,
+        }
+    }
 }
 
 /// A general Equal division of the octave.
@@ -123,372 +185,35 @@ pub struct Edo {
     /// Middle C.
     middle_c: MidiNote,
 
-    /// The values of the intervals for this Edo.
-    intervals: &'static [isize],
+    /// The number of steps for each named interval this tuning defines.
+    intervals: BTreeMap<IntervalStep, isize>,
 
-    /// Names of the pitches, with sharp bias.
-    sharp_names: &'static [&'static str],
-    flat_names: &'static [&'static str],
+    /// Names of the pitches, with sharp bias, then with flat bias.
+    sharp_names: Vec<String>,
+    flat_names: Vec<String>,
+
+    /// How to color the keys.
+    color: ColorScheme,
 }
 
-pub static EDO12: Edo = Edo {
-    octave: 12,
-    channel_octaves: None,
-    middle_c: MidiNote { channel: 1, note: 60 },
-    intervals: EDO12_INTERVALS.as_slice(),
-    sharp_names: EDO12_SHARP_NAMES.as_slice(),
-    flat_names: EDO12_FLAT_NAMES.as_slice(),
-};
-
-static EDO12_INTERVALS: [isize; 11] = [
-    1, 1, 2, 3, 4, 5, 6, 6, 7, 2, 4,
-];
-
-static EDO12_SHARP_NAMES: [&'static str; 12] = [
-    "C",
-    "C♯",
-    "D",
-    "D♯",
-    "E",
-    "F",
-    "F♯",
-    "G",
-    "G♯",
-    "A",
-    "A♯",
-    "B",
-];
-
-static EDO12_FLAT_NAMES: [&'static str; 12] = [
-    "C",
-    "D♭",
-    "D",
-    "E♭",
-    "E",
-    "F",
-    "G♭",
-    "G",
-    "A♭",
-    "A",
-    "B♭",
-    "B",
-];
-
-pub static EDO17: Edo = Edo {
-    octave: 17,
-    channel_octaves: Some(60),
-    middle_c: MidiNote { channel: 4, note: 60 },
-    intervals: EDO17_INTERVALS.as_slice(),
-    sharp_names: EDO17_SHARP_NAMES.as_slice(),
-    flat_names: EDO17_FLAT_NAMES.as_slice(),
-};
-
-static EDO17_INTERVALS: [isize; 11] = [
-    2, 1, 3, 4, 6, 7, 9, 8, 10, 3, 6,
-];
-
-static EDO17_SHARP_NAMES: [&'static str; 17] = [
-    "C",
-    "D♭",
-    "C♯",
-    "D",
-    "E♭",
-    "D♯",
-    "E",
-    "F",
-    "G♭",
-    "F♯",
-    "G",
-    "A♭",
-    "G♯",
-    "A",
-    "B♭",
-    "A♯",
-    "B",
-];
-
-static EDO17_FLAT_NAMES: [&'static str; 17] = [
-    "C",
-    "D♭",
-    "C♯",
-    "D",
-    "E♭",
-    "D♯",
-    "E",
-    "F",
-    "G♭",
-    "F♯",
-    "G",
-    "A♭",
-    "G♯",
-    "A",
-    "B♭",
-    "A♯",
-    "B",
-];
-
-pub static EDO19: Edo = Edo {
-    octave: 19,
-    channel_octaves: Some(60),
-    middle_c: MidiNote { channel: 4, note: 60 },
-    intervals: EDO19_INTERVALS.as_slice(),
-    sharp_names: EDO19_SHARP_NAMES.as_slice(),
-    flat_names: EDO19_FLAT_NAMES.as_slice(),
-};
-
-static EDO19_INTERVALS: [isize; 11] = [
-    1, 2, 3, 5, 6, 8, 9, 10, 11, 3, 6,
-];
-
-static EDO19_SHARP_NAMES: [&'static str; 19] = [
-    "C",
-    "C♯",
-    "D♭",
-    "D",
-    "D♯",
-    "E♭",
-    "E",
-    "E♯",
-    "F",
-    "F♯",
-    "G♭",
-    "G",
-    "G♯",
-    "A♭",
-    "A",
-    "A♯",
-    "B♭",
-    "B",
-    "B♯",
-];
-
-static EDO19_FLAT_NAMES: [&'static str; 19] = [
-    "C",
-    "C♯",
-    "D♭",
-    "D",
-    "D♯",
-    "E♭",
-    "E",
-    "F♭",
-    "F",
-    "F♯",
-    "G♭",
-    "G",
-    "G♯",
-    "A♭",
-    "A",
-    "A♯",
-    "B♭",
-    "B",
-    "C♭",
-];
-
-pub static EDO31: Edo = Edo {
-    octave: 31,
-    channel_octaves: Some(60),
-    middle_c: MidiNote { channel: 4, note: 60 },
-    intervals: EDO31_INTERVALS.as_slice(),
-    sharp_names: EDO31_NAMES.as_slice(),
-    flat_names: EDO31_NAMES.as_slice(),
-};
-
-static EDO31_INTERVALS: [isize; 11] = [
-    2, 3, 5, 8, 10, 13, 15, 16, 18, 4, 9,
-];
-
-static EDO31_NAMES: [&'static str; 31] = [
-    "C",
-    "D𝄫",
-    "C♯",
-    "D♭",
-    "C𝄪",
-    "D",
-    "E𝄫",
-    "D♯",
-    "E♭",
-    "D𝄪",
-    "E",
-    "F♭",
-    "E♯",
-    "F",
-    "G𝄫",
-    "F♯",
-    "G♭",
-    "F𝄪",
-    "G",
-    "A𝄫",
-    "G♯",
-    "A♭",
-    "G𝄪",
-    "A",
-    "B𝄫",
-    "A♯",
-    "B♭",
-    "A𝄪",
-    "B",
-    "C♭",
-    "B♯",
-];
-
-pub static EDO41: Edo = Edo {
-    octave: 41,
-    channel_octaves: Some(60),
-    middle_c: MidiNote { channel: 4, note: 60 },
-    intervals: EDO41_INTERVALS.as_slice(),
-    sharp_names: EDO41_NAMES.as_slice(),
-    flat_names: EDO41_NAMES.as_slice(),
-};
-
-static EDO41_INTERVALS: [isize; 11] = [
-    4, 3, 7, 10, 14, 17, 21, 20, 24, 5, 12,
-];
-
-static EDO41_NAMES: [&'static str; 41] = [
-    "C",
-    "^C",
-    "^^C",
-    "D♭",
-    "C♯",
-    "vvD",
-    "vD",
-    "D",
-    "^D",
-    "^^D",
-    "E♭",
-    "D♯",
-    "vvE",
-    "vE",
-    "E",
-    "E",
-    "vF",
-    "F",
-    "^F",
-    "^^F",
-    "G♭",
-    "F♯",
-    "vvG",
-    "vG",
-    "G",
-    "^G",
-    "^^G",
-    "A♭",
-    "G♯",
-    "vvA",
-    "vA",
-    "A",
-    "^A",
-    "^^A",
-    "B♭",
-    "A♯",
-    "vvB",
-    "vB",
-    "B",
-    "^B",
-    "vC",
-];
-
-pub static EDO53: Edo = Edo {
-    octave: 53,
-    channel_octaves: Some(1),
-    middle_c: MidiNote { channel: 4, note: 1 },
-    intervals: EDO53_INTERVALS.as_slice(),
-    sharp_names: EDO53_NAMES.as_slice(),
-    flat_names: EDO53_NAMES.as_slice(),
-};
-
-static EDO53_INTERVALS: [isize; 11] = [
-    // Aug1
-    5,
-    // m2
-    4,
-    // M2
-    9,
-    // m3
-    13,
-    // M3
-    18,
-    // P4
-    22,
-    // Aug4
-    25, // ??
-    // Dim5
-    25,
-    // P5
-    31,
-    // N2
-    5, // EDO53 doesn't have a neutral, but dupmajor 2 and 3rd fall half way between the fourth and
-       // the fifth, so use them.
-    // N3
-    14,
-];
-
-static EDO53_NAMES: [&'static str; 53] = [
-    // 0, C
-    "C",
-    "^C",
-    "^^C",
-    "vvC♯",
-    "D♭",
-    "C♯",
-    "^^D♭",
-    "vvD",
-    "vD",
-    // 9, D
-    "D",
-    "^D",
-    "^^D",
-    "vvD♯",
-    "E♭",
-    "D♯",
-    "^^E♭",
-    "vvE",
-    "vE",
-    // 18, E
-    "E",
-    "^E",
-    "^^E", // "vvF",
-    "vF",
-    // 22, F
-    "F",
-    "^F",
-    "^^F",
-    "vvF♯",
-    "G♭",
-    "F♯",
-    "^^G♭",
-    "vvG",
-    "vG",
-    // 31, G
-    "G",
-    "^G",
-    "^^G",
-    "vvG♯",
-    "A♭",
-    "G♯",
-    "^^A♭",
-    "vvA",
-    "vA",
-    // 40, A
-    "A",
-    "^A",
-    "^^A",
-    "vvA♯",
-    "B♭",
-    "A♯",
-    "^^B♭",
-    "vvB",
-    "vB",
-    // 49, B
-    "B",
-    "^B",
-    "^^B", // "vvC",
-    "vC",
-];
+impl Edo {
+    /// Construct an Edo from already-validated config data.
+    pub fn new(
+        octave: usize,
+        channel_octaves: Option<usize>,
+        middle_c: MidiNote,
+        intervals: BTreeMap<IntervalStep, isize>,
+        sharp_names: Vec<String>,
+        flat_names: Vec<String>,
+        color: ColorScheme,
+    ) -> Edo {
+        Edo { octave, channel_octaves, middle_c, intervals, sharp_names, flat_names, color }
+    }
+}
 
 impl Tuning for Edo {
-    fn get_steps(&self, interval: IntervalStep) -> isize {
-        self.intervals[interval as usize]
+    fn try_get_steps(&self, interval: IntervalStep) -> Option<isize> {
+        self.intervals.get(&interval).copied()
     }
 
     fn octave(&self) -> usize {
@@ -526,7 +251,7 @@ impl Tuning for Edo {
         if let Some(bias) = self.channel_octaves {
             let pitch = note.note as usize - bias;
             let octave = note.channel;
-            let names = if sharp { self.sharp_names } else { self.flat_names };
+            let names = if sharp { &self.sharp_names } else { &self.flat_names };
             format!("{}{}", names[pitch as usize], octave)
             // format!("{}-{}", octave, pitch)
         } else {
@@ -535,15 +260,25 @@ impl Tuning for Edo {
             let pitch = pitch + self.octave as isize * 4;
             let octave = pitch / (self.octave as isize);
             let pitch = pitch % (self.octave as isize);
-            let names = if sharp { self.sharp_names } else { self.flat_names };
+            let names = if sharp { &self.sharp_names } else { &self.flat_names };
             format!("{}{}", names[pitch as usize], octave)
         }
     }
 
-    /// To start with, just base the color on the length of the note, with a
-    /// special case for C4.
     fn color(&self, note: MidiNote, sharp: bool) -> RGB8 {
-        let name = self.name(note, sharp);
+        (self.color.0)(self, note, sharp)
+    }
+
+    fn middle_c(&self) -> MidiNote {
+        self.middle_c
+    }
+}
+
+/// The default color scheme: base the color on the length of the note name,
+/// with a special case for C4 and the up/down accidental variants.
+fn ups_downs_color(edo: &Edo, note: MidiNote, sharp: bool) -> RGB8 {
+    let name = edo.name(note, sharp);
+    {
         if name == "C4" {
             return RGB8::new(150, 150, 192);
         }
@@ -616,19 +351,24 @@ impl Tuning for Edo {
 
         RGB8::new(130, 192, 130)
     }
-
-    fn middle_c(&self) -> MidiNote {
-        self.middle_c
-    }
 }
 
-#[test]
-fn test_edo12() {
-    assert_eq!(EDO12.name(MidiNote { channel: 1, note: 60 }, true), "C4");
-    assert_eq!(EDO12.name(MidiNote { channel: 1, note: 61 }, true), "C♯4");
-    assert_eq!(EDO12.name(MidiNote { channel: 1, note: 62 }, true), "D4");
-    assert_eq!(EDO12.name(MidiNote { channel: 1, note: 71 }, true), "B4");
-    assert_eq!(EDO12.name(MidiNote { channel: 1, note: 72 }, true), "C5");
-    assert_eq!(EDO12.name(MidiNote { channel: 1, note: 61 }, false), "D♭4");
-    assert_eq!(EDO12.name(MidiNote { channel: 1, note: 48 }, true), "C3");
+#[cfg(test)]
+mod test {
+    use super::*;
+    use crate::config::Config;
+
+    /// Build the edo12 tuning from the real config and check note naming.
+    #[test]
+    fn test_edo12() {
+        let cfg = Config::load("config".as_ref()).expect("load config");
+        let edo12 = cfg.tuning("edo12").expect("edo12 tuning");
+        assert_eq!(edo12.name(MidiNote { channel: 1, note: 60 }, true), "C4");
+        assert_eq!(edo12.name(MidiNote { channel: 1, note: 61 }, true), "C♯4");
+        assert_eq!(edo12.name(MidiNote { channel: 1, note: 62 }, true), "D4");
+        assert_eq!(edo12.name(MidiNote { channel: 1, note: 71 }, true), "B4");
+        assert_eq!(edo12.name(MidiNote { channel: 1, note: 72 }, true), "C5");
+        assert_eq!(edo12.name(MidiNote { channel: 1, note: 61 }, false), "D♭4");
+        assert_eq!(edo12.name(MidiNote { channel: 1, note: 48 }, true), "C3");
+    }
 }
