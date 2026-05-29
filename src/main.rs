@@ -1,7 +1,7 @@
 use std::fs::create_dir;
 
 use anyhow::Result;
-use microtone::{lumatone::{FillInfo, KeyIndex, Keyboard, Layout, BOSANQUET, DLB_WICKI1, HARMONIC_TABLE, WICKI_HAYDEN}, tuning::{Tuning, EDO12, EDO17, EDO19, EDO31, EDO41, EDO53}};
+use microtone::{lumatone::{coverage, FillInfo, KeyIndex, Keyboard, Layout, BOSANQUET, DLB_WICKI1, HARMONIC_TABLE, WICKI_HAYDEN}, tuning::{Tuning, EDO12, EDO17, EDO19, EDO31, EDO41, EDO53}};
 
 // An ltn to generate.  For each, we generate an ltn, and a svg showing the
 // layout.
@@ -212,6 +212,15 @@ fn main() -> Result<()> {
 
     // Generate all of the layouts.
     for ltn in LTNS {
+        // Warn about layouts that don't place every note within a single octave.
+        let cov = coverage(&ltn.layout.resolve(ltn.tuning), ltn.tuning.octave());
+        if !cov.per_octave_complete {
+            eprintln!(
+                "warning: {} is not per-octave complete (gcd={}): ~{} of {} notes per octave, closes every {} octaves",
+                ltn.name, cov.gcd, cov.notes_per_octave, ltn.tuning.octave(), cov.octaves_to_close,
+            );
+        }
+
         let mut keyb = Keyboard::default();
         for fill in ltn.fills {
             keyb.fill_layout(ltn.tuning, ltn.layout, fill);

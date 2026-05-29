@@ -6,12 +6,12 @@ use std::collections::VecDeque;
 
 use crate::tuning::{MidiNote, Tuning};
 
-use super::{Dir, FillInfo, KeyIndex, KeyInfo, Keyboard, Layout, MoveMap};
+use super::{Dir, FillInfo, KeyIndex, KeyInfo, Keyboard, Layout, MoveMap, ResolvedLayout};
 
-pub struct Filler<'k, 't, 'l, 'f> {
+pub struct Filler<'k, 't, 'f> {
     keyboard: &'k mut Keyboard,
     tuning: &'t dyn Tuning,
-    layout: &'l Layout,
+    layout: ResolvedLayout,
     info: &'f FillInfo,
 
     /// Cells that need to be filled in.
@@ -53,15 +53,18 @@ enum Cardinal {
     Left, Right, Up, Down,
 }
 
-impl<'k, 't, 'l, 'f> Filler<'k, 't, 'l, 'f> {
+impl<'k, 't, 'f> Filler<'k, 't, 'f> {
     /// Construct a new filler with the given information.
     pub fn new(
         keyboard: &'k mut Keyboard,
         tuning: &'t dyn Tuning,
-        layout: &'l Layout,
+        layout: &Layout,
         info: &'f FillInfo,
-    ) -> Filler<'k, 't, 'l, 'f>
+    ) -> Filler<'k, 't, 'f>
     {
+        // Resolve the two specified axes to concrete step counts once up front.
+        let layout = layout.resolve(tuning);
+
         // Create the initial work.
         let first_cell = Work {
             x: 0,
@@ -216,15 +219,15 @@ impl Phase {
 
     /// Move this note, according to the given direction.
     pub fn note_move(self, filler: &Filler, note: MidiNote, card: Cardinal) -> Option<MidiNote> {
-        let interval = match self.dir(card) {
-            Dir::Left => filler.layout.right.flip(),
+        let steps = match self.dir(card) {
+            Dir::Left => -filler.layout.right,
             Dir::Right => filler.layout.right,
             Dir::UpLeft => filler.layout.up_left,
             Dir::UpRight => filler.layout.up_right,
-            Dir::DownLeft => filler.layout.up_right.flip(),
-            Dir::DownRight => filler.layout.up_left.flip(),
+            Dir::DownLeft => -filler.layout.up_right,
+            Dir::DownRight => -filler.layout.up_left,
         };
-        filler.tuning.interval(note, interval)
+        filler.tuning.step(note, steps)
     }
 
     /// Return the complement of this phase.

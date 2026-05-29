@@ -459,41 +459,135 @@ impl Keyboard {
     }
 }
 
-/// A layout is defined by the interval used in the given directions.  Note that
-/// the keyboard won't be meaningful if the generators aren't consistent.  In
-/// general, at least two of the generators should be relatively prime to the
-/// scale size, and the third generator is defined by the other two.
-pub struct Layout {
-    right: Interval,
-    up_left: Interval,
-    up_right: Interval,
+/// A single layout generator: how far one move in a direction shifts the pitch.
+/// It is either a named interval (resolved to steps per-tuning, for mild
+/// cross-EDO reuse) or a raw signed EDO step count (exact, EDO-specific).
+pub enum Generator {
+    Named(Interval),
+    Steps(isize),
 }
 
-pub static WICKI_HAYDEN: Layout = Layout {
-    right: Interval::new(IntervalStep::MajorSecond, IntervalDirection::Up),
-    up_left: Interval::new(IntervalStep::PerfectFourth, IntervalDirection::Up),
-    up_right: Interval::new(IntervalStep::PerfectFifth, IntervalDirection::Up),
+impl Generator {
+    /// Convenience const constructor for a named-interval generator.
+    pub const fn named(step: IntervalStep, direction: IntervalDirection) -> Generator {
+        Generator::Named(Interval::new(step, direction))
+    }
+
+    /// Resolve this generator to a signed step count for the given tuning.
+    fn steps(&self, tuning: &dyn Tuning) -> isize {
+        match self {
+            Generator::Named(iv) => tuning.interval_steps(*iv),
+            Generator::Steps(n) => *n,
+        }
+    }
+}
+
+/// A layout is defined by exactly two of the three hex axes; the third is always
+/// derived, since on the keyboard the up-right neighbor is the up-left neighbor
+/// shifted one to the right (`up_right = up_left + right` in steps).  The enum
+/// makes it impossible to over- or under-specify the axes.
+pub enum Layout {
+    RightUpLeft { right: Generator, up_left: Generator },
+    RightUpRight { right: Generator, up_right: Generator },
+    UpLeftUpRight { up_left: Generator, up_right: Generator },
+}
+
+/// Concrete signed step counts for all three axes, resolved against a tuning.
+pub struct ResolvedLayout {
+    pub right: isize,
+    pub up_left: isize,
+    pub up_right: isize,
+}
+
+impl Layout {
+    /// Resolve the two specified axes to step counts and derive the third via
+    /// `up_right = up_left + right`.
+    pub fn resolve(&self, tuning: &dyn Tuning) -> ResolvedLayout {
+        match self {
+            Layout::RightUpLeft { right, up_left } => {
+                let right = right.steps(tuning);
+                let up_left = up_left.steps(tuning);
+                ResolvedLayout { right, up_left, up_right: right + up_left }
+            }
+            Layout::RightUpRight { right, up_right } => {
+                let right = right.steps(tuning);
+                let up_right = up_right.steps(tuning);
+                ResolvedLayout { right, up_left: up_right - right, up_right }
+            }
+            Layout::UpLeftUpRight { up_left, up_right } => {
+                let up_left = up_left.steps(tuning);
+                let up_right = up_right.steps(tuning);
+                ResolvedLayout { right: up_right - up_left, up_left, up_right }
+            }
+        }
+    }
+}
+
+pub static WICKI_HAYDEN: Layout = Layout::RightUpLeft {
+    right: Generator::named(IntervalStep::MajorSecond, IntervalDirection::Up),
+    up_left: Generator::named(IntervalStep::PerfectFourth, IntervalDirection::Up),
 };
 
 /// A double-stack variant of Wicki-Hayden where the 5th is two rows up, and the row between
-/// contains neutral and other intervals.
-pub static DLB_WICKI1: Layout = Layout {
-    right: Interval::new(IntervalStep::MajorSecond, IntervalDirection::Up),
-    up_left: Interval::new(IntervalStep::NeutralSecond, IntervalDirection::Up),
-    up_right: Interval::new(IntervalStep::NeutralThird, IntervalDirection::Up),
+/// contains neutral and other intervals.  The derived up-right axis is the neutral third.
+pub static DLB_WICKI1: Layout = Layout::RightUpLeft {
+    right: Generator::named(IntervalStep::MajorSecond, IntervalDirection::Up),
+    up_left: Generator::named(IntervalStep::NeutralSecond, IntervalDirection::Up),
 };
 
-pub static HARMONIC_TABLE: Layout = Layout {
-    right: Interval::new(IntervalStep::MajorThird, IntervalDirection::Up),
-    up_left: Interval::new(IntervalStep::MinorThird, IntervalDirection::Up),
-    up_right: Interval::new(IntervalStep::PerfectFifth, IntervalDirection::Up),
+pub static HARMONIC_TABLE: Layout = Layout::RightUpLeft {
+    right: Generator::named(IntervalStep::MajorThird, IntervalDirection::Up),
+    up_left: Generator::named(IntervalStep::MinorThird, IntervalDirection::Up),
 };
 
-pub static BOSANQUET: Layout = Layout {
-    right: Interval::new(IntervalStep::MajorSecond, IntervalDirection::Up),
-    up_left: Interval::new(IntervalStep::MinorSecond, IntervalDirection::Down),
-    up_right: Interval::new(IntervalStep::AugUnison, IntervalDirection::Up),
+pub static BOSANQUET: Layout = Layout::RightUpLeft {
+    right: Generator::named(IntervalStep::MajorSecond, IntervalDirection::Up),
+    up_left: Generator::named(IntervalStep::MinorSecond, IntervalDirection::Down),
 };
+
+/// How thoroughly a resolved layout fills an octave of a given EDO.
+#[derive(Debug, Clone, Copy)]
+pub struct Coverage {
+    /// gcd of the two independent axes' step counts.  This is the key quantity:
+    /// every reachable pitch offset is a multiple of it.
+    pub gcd: usize,
+    /// Whether all pitch classes are reachable somewhere on the grid.  For prime
+    /// EDOs this is essentially always true.
+    pub covers_edo: bool,
+    /// Whether a single octave contains every pitch class (true iff gcd == 1).
+    pub per_octave_complete: bool,
+    /// Approximate number of distinct pitch classes within one octave.
+    pub notes_per_octave: usize,
+    /// How many octaves it takes before every reachable class has appeared.
+    pub octaves_to_close: usize,
+}
+
+/// Determine how completely a resolved layout fills the octaves of an EDO.
+///
+/// Reachable pitch offsets are all multiples of `g = gcd(right, up_left)`, so a
+/// window of one octave (`octave` steps) only ever holds the multiples of `g`
+/// within it.  When `g > 1` each octave gets a fraction of the notes even though
+/// the layout may still cover the whole EDO across several octaves.
+pub fn coverage(layout: &ResolvedLayout, octave: usize) -> Coverage {
+    let g = match gcd(layout.right.unsigned_abs(), layout.up_left.unsigned_abs()) {
+        // Degenerate (no horizontal/diagonal movement): treat as a full octave.
+        0 => octave.max(1),
+        n => n,
+    };
+    let edo_gcd = gcd(g, octave).max(1);
+    Coverage {
+        gcd: g,
+        covers_edo: edo_gcd == 1,
+        per_octave_complete: g == 1,
+        notes_per_octave: octave / g.max(1),
+        octaves_to_close: g / edo_gcd,
+    }
+}
+
+/// Greatest common divisor.
+fn gcd(a: usize, b: usize) -> usize {
+    if b == 0 { a } else { gcd(b, a % b) }
+}
 
 /// Parameters needed to fill a layout.
 pub struct FillInfo {
@@ -565,6 +659,61 @@ mod test {
         let keyb = Keyboard::default();
         println!("{:?}", keyb);
         // todo!()
+    }
+
+    use super::{coverage, Generator, Layout, ResolvedLayout};
+    use crate::tuning::{IntervalDirection, IntervalStep, EDO31};
+
+    /// Every layout variant should derive the same third axis via
+    /// `up_right = up_left + right`, regardless of which two are supplied.
+    #[test]
+    fn layout_derives_third_axis() {
+        let m2 = || Generator::named(IntervalStep::MajorSecond, IntervalDirection::Up);
+        let p4 = || Generator::named(IntervalStep::PerfectFourth, IntervalDirection::Up);
+        let p5 = || Generator::named(IntervalStep::PerfectFifth, IntervalDirection::Up);
+
+        // On edo31: M2 = 5, P4 = 13, P5 = 18.
+        let from_rl = Layout::RightUpLeft { right: m2(), up_left: p4() }.resolve(&EDO31);
+        let from_rr = Layout::RightUpRight { right: m2(), up_right: p5() }.resolve(&EDO31);
+        let from_ll = Layout::UpLeftUpRight { up_left: p4(), up_right: p5() }.resolve(&EDO31);
+
+        for r in [&from_rl, &from_rr, &from_ll] {
+            assert_eq!((r.right, r.up_left, r.up_right), (5, 13, 18));
+        }
+    }
+
+    /// A raw-steps generator bypasses the interval tables entirely.
+    #[test]
+    fn layout_raw_steps() {
+        let r = Layout::RightUpLeft {
+            right: Generator::Steps(5),
+            up_left: Generator::Steps(13),
+        }
+        .resolve(&EDO31);
+        assert_eq!((r.right, r.up_left, r.up_right), (5, 13, 18));
+    }
+
+    #[test]
+    fn coverage_complete_when_coprime() {
+        // Wicki-Hayden on edo31: gcd(5, 13) = 1.
+        let cov = coverage(&ResolvedLayout { right: 5, up_left: 13, up_right: 18 }, 31);
+        assert!(cov.per_octave_complete);
+        assert!(cov.covers_edo);
+        assert_eq!(cov.gcd, 1);
+        assert_eq!(cov.octaves_to_close, 1);
+        assert_eq!(cov.notes_per_octave, 31);
+    }
+
+    #[test]
+    fn coverage_half_when_gcd_two() {
+        // Harmonic table on edo31: M3 = 10, m3 = 8, gcd = 2.  Covers the EDO
+        // (gcd(2, 31) = 1) but only half the notes land in any one octave.
+        let cov = coverage(&ResolvedLayout { right: 10, up_left: 8, up_right: 18 }, 31);
+        assert!(!cov.per_octave_complete);
+        assert!(cov.covers_edo);
+        assert_eq!(cov.gcd, 2);
+        assert_eq!(cov.octaves_to_close, 2);
+        assert_eq!(cov.notes_per_octave, 15);
     }
 
     /// Test keymovement.

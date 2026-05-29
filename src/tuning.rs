@@ -74,10 +74,24 @@ impl Interval {
 /// A tuning system, at least as much information as is needed to produce a
 /// keyboard layout and midi mapping.  Right now, the midi mapping is definitive.
 pub trait Tuning {
-    /// Adjust a note by an interval. `up` indicates a higher pitch when true.
-    /// None indicates either the note is out of range, or the interval doesn't
-    /// make sense with this tuning.
-    fn interval(&self, note: MidiNote, interval: Interval) -> Option<MidiNote>;
+    /// Number of steps in an octave for this tuning.
+    fn octave(&self) -> usize;
+
+    /// Adjust a note by a raw, signed number of steps. Positive raises the
+    /// pitch, negative lowers it. None indicates the result is out of range.
+    fn step(&self, note: MidiNote, steps: isize) -> Option<MidiNote>;
+
+    /// Resolve a named interval to a signed step count for this tuning.
+    fn interval_steps(&self, interval: Interval) -> isize {
+        let steps = self.get_steps(interval.step);
+        if interval.is_up() { steps } else { -steps }
+    }
+
+    /// Adjust a note by an interval. None indicates either the note is out of
+    /// range, or the interval doesn't make sense with this tuning.
+    fn interval(&self, note: MidiNote, interval: Interval) -> Option<MidiNote> {
+        self.step(note, self.interval_steps(interval))
+    }
 
     /// Return a nice name for this note. The 'sharp' hint is for tuning systems
     /// that have enharmonic sharps and flats, as a suggestion of which name to
@@ -477,37 +491,34 @@ impl Tuning for Edo {
         self.intervals[interval as usize]
     }
 
-    fn interval(&self, note: MidiNote, interval: Interval) -> Option<MidiNote> {
+    fn octave(&self) -> usize {
+        self.octave
+    }
+
+    fn step(&self, note: MidiNote, steps: isize) -> Option<MidiNote> {
         if let Some(bias) = self.channel_octaves {
-            let bias = bias as usize;
+            let bias = bias as isize;
+            let octave = self.octave as isize;
 
             // Bias everything by 100 octaves.  This shouldn't be a problem even
-            // with very fine tunings.
-            let steps = self.get_steps(interval.step);
-            if steps < 0 {
-                // We don't support tunings with negative intervals.
-                todo!();
-            }
-            let steps = steps as usize;
-            let pitch = (100 + note.channel as usize) * self.octave as usize
-                + (note.note as usize - bias);
-            let pitch = if interval.is_up() { pitch + steps } else { pitch - steps };
-            let octave = pitch / self.octave;
-            if octave < 100 || octave > 227 {
-                println!("Out of bound octave: {}", octave);
+            // with very fine tunings, and keeps the arithmetic positive.
+            let pitch = (100 + note.channel as isize) * octave
+                + (note.note as isize - bias)
+                + steps;
+            let oct = pitch.div_euclid(octave);
+            if oct < 100 || oct > 227 {
+                println!("Out of bound octave: {}", oct);
                 return None;
             }
-            let octave = octave - 100;
-            let pitch = pitch % self.octave + bias;
-            Some(MidiNote { channel: octave as u8, note: pitch as u8, })
+            let oct = oct - 100;
+            let pitch = pitch.rem_euclid(octave) + bias;
+            Some(MidiNote { channel: oct as u8, note: pitch as u8, })
         } else {
-            let steps = self.get_steps(interval.step);
-            let steps = u8::try_from(steps).ok()?;
-            let pitch = if interval.is_up() { note.note.checked_add(steps)? } else { note.note.checked_sub(steps)? };
-            if pitch > 127 {
+            let pitch = note.note as isize + steps;
+            if pitch < 0 || pitch > 127 {
                 return None;
             }
-            Some(MidiNote { channel: note.channel, note: pitch, })
+            Some(MidiNote { channel: note.channel, note: pitch as u8, })
         }
     }
 
