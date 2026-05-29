@@ -163,7 +163,7 @@ impl Keyboard {
                 match self.get(key) {
                     Some(info) => {
                         if true {
-                            let label = format!("{} {}", info.note as isize - 1, &info.label);
+                            let label = format!("{} {}", info.note, &info.label);
                             writer.add(x, y as u32, info.color, &label);
                         } else if false {
                             let label = format!("{},{},{}", /*info.label, */

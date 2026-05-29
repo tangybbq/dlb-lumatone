@@ -11,7 +11,7 @@
 <path d="M47.235256,1.4709344 L51.24587,-2.6821766 L49.654476,-8.232023 L44.05247,-9.628759 L40.04186,-5.47565 L41.63325,0.07419634 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
 <path d="M6.365573,22.199387 L10.376184,18.046276 L8.784791,12.496429 L3.1827855,11.099693 L-0.82782555,15.252803 L0.7635665,20.802649 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
 <path d="M15.978189,19.443012 L19.9888,15.289902 L18.397408,9.740055 L12.795402,8.343319 L8.784791,12.4964285 L10.376183,18.046274 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
-<path d="M25.590805,16.68664 L29.601418,12.533528 L28.010025,6.983681 L22.408018,5.5869455 L18.397408,9.740055 L19.9888,15.289902 z" fill="#a0a0e0" stroke="black" stroke-width="0.3"/>
+<path d="M25.590805,16.68664 L29.601418,12.533528 L28.010025,6.983681 L22.408018,5.5869455 L18.397408,9.740055 L19.9888,15.289902 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
 <path d="M35.203423,13.930265 L39.214035,9.777155 L37.622643,4.227308 L32.020638,2.8305721 L28.010025,6.9836817 L29.601418,12.533527 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
 <path d="M44.81604,11.173891 L48.826653,7.0207806 L47.23526,1.4709334 L41.633255,0.07419777 L37.622643,4.2273073 L39.214035,9.777153 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
 <path d="M54.428658,8.417517 L58.43927,4.264406 L56.847878,-1.2854409 L51.245872,-2.6821766 L47.23526,1.4709331 L48.826653,7.020779 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
@@ -30,7 +30,7 @@
 <path d="M109.68514,1.5822339 L113.695755,-2.570877 L112.10436,-8.120724 L106.50236,-9.51746 L102.491745,-5.3643503 L104.08314,0.18549585 z" fill="#aae4e0" stroke="black" stroke-width="0.3"/>
 <path d="M11.139752,38.848927 L15.150364,34.695816 L13.55897,29.14597 L7.956965,27.749233 L3.946354,31.902344 L5.537746,37.45219 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
 <path d="M20.752369,36.092552 L24.762981,31.939442 L23.171589,26.389595 L17.569582,24.992859 L13.558971,29.14597 L15.150364,34.695816 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
-<path d="M30.364985,33.336178 L34.375595,29.183067 L32.784203,23.63322 L27.182198,22.236485 L23.171587,26.389595 L24.76298,31.93944 z" fill="#a0a0e0" stroke="black" stroke-width="0.3"/>
+<path d="M30.364985,33.336178 L34.375595,29.183067 L32.784203,23.63322 L27.182198,22.236485 L23.171587,26.389595 L24.76298,31.93944 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
 <path d="M39.9776,30.579805 L43.988213,26.426695 L42.39682,20.876848 L36.794815,19.480112 L32.784203,23.633223 L34.375595,29.183067 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
 <path d="M49.590218,27.823431 L53.60083,23.67032 L52.009438,18.120474 L46.407433,16.723738 L42.39682,20.876848 L43.988213,26.426693 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
 <path d="M59.202835,25.067057 L63.213448,20.913946 L61.622055,15.3640995 L56.02005,13.967363 L52.009438,18.120474 L53.60083,23.670319 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
@@ -61,7 +61,7 @@
 <path d="M172.13504,1.6935315 L176.14565,-2.4595795 L174.55424,-8.009426 L168.95224,-9.406162 L164.94164,-5.2530527 L166.53302,0.29679346 z" fill="#a0a0e0" stroke="black" stroke-width="0.3"/>
 <path d="M15.913933,55.49847 L19.924545,51.34536 L18.33315,45.795513 L12.731145,44.398777 L8.720534,48.551888 L10.311926,54.101734 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
 <path d="M25.526548,52.742096 L29.53716,48.588985 L27.945766,43.03914 L22.343761,41.642403 L18.33315,45.795513 L19.924543,51.34536 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
-<path d="M35.139164,49.98572 L39.149776,45.83261 L37.558384,40.282764 L31.956377,38.88603 L27.945766,43.03914 L29.537159,48.588985 z" fill="#a0a0e0" stroke="black" stroke-width="0.3"/>
+<path d="M35.139164,49.98572 L39.149776,45.83261 L37.558384,40.282764 L31.956377,38.88603 L27.945766,43.03914 L29.537159,48.588985 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
 <path d="M44.75178,47.22935 L48.762394,43.07624 L47.171,37.526394 L41.568996,36.129658 L37.558384,40.28277 L39.149776,45.832615 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
 <path d="M54.3644,44.472973 L58.37501,40.319862 L56.78362,34.770016 L51.181614,33.37328 L47.171,37.52639 L48.762394,43.076237 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
 <path d="M63.977016,41.716602 L67.987625,37.56349 L66.39623,32.013645 L60.79423,30.616909 L56.78362,34.77002 L58.37501,40.319866 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
@@ -101,10 +101,10 @@
 <path d="M205.74706,10.073948 L209.75766,5.9208374 L208.16626,0.37099028 L202.56425,-1.0257454 L198.55365,3.1273642 L200.14503,8.67721 z" fill="#e0a0a0" stroke="black" stroke-width="0.3"/>
 <path d="M215.35966,7.317574 L219.37027,3.164463 L217.77887,-2.385384 L212.17686,-3.7821198 L208.16626,0.37098992 L209.75764,5.920836 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
 <path d="M224.97229,4.5611997 L228.9829,0.40808868 L227.3915,-5.1417584 L221.78949,-6.538494 L217.77888,-2.3853846 L219.37027,3.1644616 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
-<path d="M234.5849,1.8048253 L238.5955,-2.3482857 L237.0041,-7.898133 L231.4021,-9.294868 L227.3915,-5.141759 L228.98288,0.40808725 z" fill="#a0a0e0" stroke="black" stroke-width="0.3"/>
+<path d="M234.5849,1.8048253 L238.5955,-2.3482857 L237.0041,-7.898133 L231.4021,-9.294868 L227.3915,-5.141759 L228.98288,0.40808725 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
 <path d="M20.68811,72.14801 L24.698723,67.994896 L23.10733,62.44505 L17.505323,61.048313 L13.494713,65.20142 L15.086105,70.75127 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
 <path d="M30.300728,69.39163 L34.31134,65.238525 L32.719948,59.688675 L27.11794,58.29194 L23.10733,62.44505 L24.698723,67.994896 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
-<path d="M39.913345,66.63526 L43.923958,62.482147 L42.332565,56.9323 L36.73056,55.535564 L32.719948,59.688675 L34.31134,65.23852 z" fill="#a0a0e0" stroke="black" stroke-width="0.3"/>
+<path d="M39.913345,66.63526 L43.923958,62.482147 L42.332565,56.9323 L36.73056,55.535564 L32.719948,59.688675 L34.31134,65.23852 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
 <path d="M49.525963,63.878887 L53.536575,59.725777 L51.945183,54.17593 L46.343178,52.779194 L42.332565,56.932304 L43.923958,62.48215 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
 <path d="M59.138577,61.12251 L63.14919,56.9694 L61.557796,51.41955 L55.95579,50.022816 L51.94518,54.175926 L53.53657,59.725773 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
 <path d="M68.7512,58.36614 L72.76181,54.213028 L71.17042,48.66318 L65.56841,47.266445 L61.5578,51.419556 L63.149193,56.969402 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
@@ -149,7 +149,7 @@
 <path d="M210.52124,26.723484 L214.53185,22.570374 L212.94044,17.020527 L207.33844,15.623791 L203.32784,19.776901 L204.91922,25.326746 z" fill="#e0a0a0" stroke="black" stroke-width="0.3"/>
 <path d="M220.13385,23.96711 L224.14445,19.814 L222.55305,14.264153 L216.95105,12.867416 L212.94044,17.020527 L214.53183,22.570372 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
 <path d="M229.74648,21.210735 L233.75708,17.057625 L232.16568,11.507778 L226.56367,10.111042 L222.55307,14.264152 L224.14445,19.813997 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
-<path d="M239.35909,18.454361 L243.36969,14.30125 L241.77829,8.751404 L236.17628,7.3546677 L232.16568,11.507777 L233.75706,17.057623 z" fill="#a0a0e0" stroke="black" stroke-width="0.3"/>
+<path d="M239.35909,18.454361 L243.36969,14.30125 L241.77829,8.751404 L236.17628,7.3546677 L232.16568,11.507777 L233.75706,17.057623 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
 <path d="M248.97171,15.697987 L252.98232,11.544876 L251.39091,5.995029 L245.78891,4.5982933 L241.7783,8.751403 L243.36969,14.301249 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
 <path d="M258.58432,12.941616 L262.5949,8.788506 L261.00354,3.2386584 L255.40152,1.8419228 L251.39091,5.9950323 L252.9823,11.544878 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
 <path d="M268.19693,10.185238 L272.20752,6.0321274 L270.61615,0.48228025 L265.01413,-0.9144554 L261.00354,3.2386541 L262.5949,8.7885 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
@@ -197,7 +197,7 @@
 <path d="M215.29541,43.373028 L219.30602,39.219917 L217.71461,33.67007 L212.11261,32.273335 L208.102,36.426445 L209.69339,41.97629 z" fill="#e0a0a0" stroke="black" stroke-width="0.3"/>
 <path d="M224.90802,40.616653 L228.91862,36.463543 L227.32722,30.913696 L221.72522,29.51696 L217.71461,33.67007 L219.306,39.219917 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
 <path d="M234.52066,37.86028 L238.53127,33.70717 L236.93987,28.157322 L231.33786,26.760586 L227.32726,30.913696 L228.91864,36.463543 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
-<path d="M244.13327,35.103905 L248.14388,30.950794 L246.55247,25.400948 L240.95047,24.004211 L236.93987,28.157322 L238.53125,33.70717 z" fill="#a0a0e0" stroke="black" stroke-width="0.3"/>
+<path d="M244.13327,35.103905 L248.14388,30.950794 L246.55247,25.400948 L240.95047,24.004211 L236.93987,28.157322 L238.53125,33.70717 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
 <path d="M253.74588,32.34753 L257.75647,28.19442 L256.1651,22.644573 L250.56308,21.247837 L246.55247,25.400948 L248.14386,30.950792 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
 <path d="M263.3585,29.59116 L267.36908,25.43805 L265.7777,19.888203 L260.1757,18.491467 L256.1651,22.644577 L257.75647,28.194422 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
 <path d="M272.97113,26.834782 L276.98175,22.681671 L275.39035,17.131824 L269.78833,15.735088 L265.7777,19.888199 L267.3691,25.438044 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
@@ -234,7 +234,7 @@
 <path d="M220.0696,60.022564 L224.0802,55.869453 L222.4888,50.319607 L216.8868,48.92287 L212.87619,53.07598 L214.46758,58.625828 z" fill="#e0a0a0" stroke="black" stroke-width="0.3"/>
 <path d="M229.6822,57.26619 L233.69281,53.11308 L232.10141,47.563232 L226.4994,46.166496 L222.4888,50.319607 L224.08018,55.869453 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
 <path d="M239.29483,54.509815 L243.30544,50.356705 L241.71404,44.806858 L236.11203,43.410122 L232.10143,47.563232 L233.69281,53.11308 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
-<path d="M248.90744,51.75344 L252.91805,47.60033 L251.32664,42.050484 L245.72464,40.653748 L241.71404,44.806858 L243.30542,50.356705 z" fill="#a0a0e0" stroke="black" stroke-width="0.3"/>
+<path d="M248.90744,51.75344 L252.91805,47.60033 L251.32664,42.050484 L245.72464,40.653748 L241.71404,44.806858 L243.30542,50.356705 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
 <path d="M258.52005,48.997066 L262.53064,44.843956 L260.93927,39.29411 L255.33725,37.897373 L251.32664,42.050484 L252.91803,47.60033 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
 <path d="M268.13266,46.240696 L272.14325,42.087585 L270.55188,36.53774 L264.94986,35.141003 L260.93927,39.294113 L262.53064,44.84396 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
 <path d="M277.7453,43.484318 L281.75592,39.331207 L280.16452,33.78136 L274.5625,32.384624 L270.55188,36.537735 L272.14328,42.08758 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
@@ -259,7 +259,7 @@
 <path d="M224.84378,76.67211 L228.85439,72.519 L227.26299,66.96915 L221.66098,65.57242 L217.65038,69.725525 L219.24176,75.27537 z" fill="#e0a0a0" stroke="black" stroke-width="0.3"/>
 <path d="M234.45639,73.91574 L238.467,69.76263 L236.8756,64.212776 L231.27359,62.816044 L227.26299,66.969154 L228.85437,72.519 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
 <path d="M244.06902,71.15936 L248.07962,67.00625 L246.48822,61.4564 L240.88622,60.059666 L236.87561,64.212776 L238.467,69.76262 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
-<path d="M253.68163,68.402985 L257.69223,64.24988 L256.10083,58.700027 L250.49883,57.30329 L246.48822,61.4564 L248.0796,67.00625 z" fill="#a0a0e0" stroke="black" stroke-width="0.3"/>
+<path d="M253.68163,68.402985 L257.69223,64.24988 L256.10083,58.700027 L250.49883,57.30329 L246.48822,61.4564 L248.0796,67.00625 z" fill="#a0e0a0" stroke="black" stroke-width="0.3"/>
 <path d="M263.29425,65.646614 L267.30487,61.4935 L265.71347,55.943653 L260.11145,54.546917 L256.10083,58.700027 L257.69223,64.24987 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
 <path d="M272.90686,62.89024 L276.91748,58.73713 L275.32608,53.187283 L269.72406,51.790546 L265.71344,55.943657 L267.30484,61.493504 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
 <path d="M282.51947,60.13386 L286.5301,55.98075 L284.9387,50.430904 L279.33667,49.03417 L275.32605,53.18728 L276.91745,58.737125 z" fill="#e0baa1" stroke="black" stroke-width="0.3"/>
@@ -283,843 +283,843 @@
 <path d="M313.71228,78.21724 L317.7229,74.064125 L316.1315,68.514275 L310.52948,67.11754 L306.51886,71.27065 L308.11026,76.820496 z" fill="#e0d4a3" stroke="black" stroke-width="0.3"/>
 <path d="M323.32492,75.46086 L327.3355,71.30775 L325.74414,65.7579 L320.14212,64.36116 L316.13153,68.514275 L317.7229,74.06412 z" fill="#aae4e0" stroke="black" stroke-width="0.3"/>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="0" y="0">
-60 ^C7
+61 ^C7
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="9.612617" y="-2.756374">
-67 ^D7
+68 ^D7
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="7.193398" y="6.946583">
-84 ^G6
+85 ^G6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="16.806015" y="4.1902094">
-91 ^A6
+92 ^A6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="26.418633" y="1.433835">
-98 ^B6
+99 ^B6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="36.031246" y="-1.3225384">
-64 vvD7
+65 vvD7
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="45.643864" y="-4.0789127">
-71 vvE7
+72 vvE7
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="4.7741795" y="16.64954">
-60 ^C6
+61 ^C6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="14.386796" y="13.893166">
-67 ^D6
+68 ^D6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="23.999413" y="11.136792">
-74 E6
+75 ^E6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="33.61203" y="8.380419">
-81 vvG6
+82 vvG6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="43.224648" y="5.6240444">
-88 vvA6
+89 vvA6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="52.837265" y="2.86767">
-95 vvB6
+96 vvB6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="62.449883" y="0.11129761">
-61 ^^C7
+62 ^^C7
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="72.06249" y="-2.6450768">
-68 ^^D7
+69 ^^D7
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="11.967578" y="23.596125">
-84 ^G5
+85 ^G5
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="21.580194" y="20.839752">
-91 ^A5
+92 ^A5
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="31.192812" y="18.083378">
-98 ^B5
+99 ^B5
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="40.805428" y="15.3270035">
-64 vvD6
+65 vvD6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="50.418045" y="12.570629">
-71 vvE6
+72 vvE6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="60.030663" y="9.814256">
-78 ^^F6
+79 ^^F6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="69.64328" y="7.0578823">
-85 ^^G6
+86 ^^G6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="79.2559" y="4.301508">
-92 ^^A6
+93 ^^A6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="88.868515" y="1.5451336">
-99 vC6
+100 vC6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="98.48113" y="-1.2112408">
-65 vD7
+66 vD7
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="108.09375" y="-3.9676132">
-72 vE7
+73 vE7
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="9.548359" y="33.29908">
-60 ^C5
+61 ^C5
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="19.160976" y="30.542706">
-67 ^D5
+68 ^D5
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="28.773592" y="27.786331">
-74 E5
+75 ^E5
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="38.386208" y="25.029959">
-81 vvG5
+82 vvG5
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="47.998825" y="22.273584">
-88 vvA5
+89 vvA5
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="57.611443" y="19.51721">
-95 vvB5
+96 vvB5
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="67.22406" y="16.760838">
-61 ^^C6
+62 ^^C6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="76.83667" y="14.004463">
-68 ^^D6
+69 ^^D6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="86.449295" y="11.248089">
-75 vF6
+76 vF6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="96.061905" y="8.4917145">
-82 vG6
+83 vG6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="105.67453" y="5.73534">
-89 vA6
+90 vA6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="115.28714" y="2.9789677">
-96 vB6
+97 vB6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="124.899765" y="0.22259521">
-62 D♭7
+63 D♭7
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="134.51237" y="-2.5337791">
-69 E♭7
+70 E♭7
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="16.741756" y="40.245667">
-84 ^G4
+85 ^G4
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="26.354374" y="37.489292">
-91 ^A4
+92 ^A4
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="35.96699" y="34.732918">
-98 ^B4
+99 ^B4
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="45.579605" y="31.976543">
-64 vvD5
+65 vvD5
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="55.192223" y="29.22017">
-71 vvE5
+72 vvE5
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="64.80484" y="26.463795">
-78 ^^F5
+79 ^^F5
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="74.41746" y="23.707422">
-85 ^^G5
+86 ^^G5
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="84.030075" y="20.951048">
-92 ^^A5
+93 ^^A5
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="93.64269" y="18.194674">
-99 vC5
+100 vC5
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="103.25531" y="15.438299">
-65 vD6
+66 vD6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="112.86793" y="12.681927">
-72 vE6
+73 vE6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="122.480545" y="9.925552">
-79 G♭6
+80 G♭6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="132.09317" y="7.169178">
-86 A♭6
+87 A♭6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="141.70578" y="4.4128036">
-93 B♭6
+94 B♭6
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="151.3184" y="1.6564293">
-59 C7
+60 C7
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="160.93102" y="-1.0999451">
-66 D7
+67 D7
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="170.54364" y="-3.8563156">
-73 E7
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="14.322539" y="49.948624">
-60 ^C4
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="23.935156" y="47.19225">
-67 ^D4
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="33.54777" y="44.435875">
-74 E4
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="43.16039" y="41.679504">
-81 vvG4
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="52.773006" y="38.923126">
-88 vvA4
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="62.385624" y="36.166756">
-95 vvB4
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="71.99824" y="33.41038">
-61 ^^C5
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="81.610855" y="30.654007">
-68 ^^D5
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="91.22347" y="27.897633">
-75 vF5
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="100.83609" y="25.141258">
-82 vG5
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="110.44871" y="22.384884">
-89 vA5
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="120.061325" y="19.628511">
-96 vB5
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="129.67393" y="16.872139">
-62 D♭6
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="139.28656" y="14.115765">
-69 E♭6
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="148.89917" y="11.35939">
-76 F6
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="158.5118" y="8.603016">
-83 G6
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="168.1244" y="5.8466415">
-90 A6
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="177.73703" y="3.0902672">
-97 B6
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="187.34964" y="0.33389282">
-63 C♯7
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="196.96227" y="-2.4224815">
-70 D♯7
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="21.515938" y="56.895206">
-84 ^G3
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="31.128555" y="54.138832">
-91 ^A3
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="40.741173" y="51.382458">
-98 ^B3
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="50.353786" y="48.626083">
-64 vvD4
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="59.966404" y="45.86971">
-71 vvE4
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="69.579025" y="43.113335">
-78 ^^F4
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="79.191635" y="40.356964">
-85 ^^G4
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="88.80426" y="37.600586">
-92 ^^A4
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="98.41687" y="34.844215">
-99 vC4
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="108.029495" y="32.087837">
-65 vD5
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="117.642105" y="29.331467">
-72 vE5
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="127.25473" y="26.575092">
-79 G♭5
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="136.86734" y="23.818718">
-86 A♭5
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="146.47995" y="21.062344">
-93 B♭5
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="156.09258" y="18.30597">
-59 C6
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="165.70518" y="15.549595">
-66 D6
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="175.31781" y="12.793224">
-73 E6
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="184.93042" y="10.03685">
-80 F♯6
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="194.54305" y="7.2804756">
-87 G♯6
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="204.15565" y="4.5241013">
-94 A♯6
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="213.76826" y="1.7677269">
-60 ^C7
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="223.38089" y="-0.98864746">
-67 ^D7
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="232.9935" y="-3.7450218">
 74 E7
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="19.096718" y="66.59816">
-60 ^C3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="14.322539" y="49.948624">
+61 ^C4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="28.709335" y="63.841785">
-67 ^D3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="23.935156" y="47.19225">
+68 ^D4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="38.321953" y="61.08541">
-74 E3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="33.54777" y="44.435875">
+75 ^E4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="47.93457" y="58.32904">
-81 vvG3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="43.16039" y="41.679504">
+82 vvG4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="57.547184" y="55.572662">
-88 vvA3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="52.773006" y="38.923126">
+89 vvA4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="67.159805" y="52.81629">
-95 vvB3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="62.385624" y="36.166756">
+96 vvB4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="76.772415" y="50.059917">
-61 ^^C4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="71.99824" y="33.41038">
+62 ^^C5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="86.38503" y="47.303543">
-68 ^^D4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="81.610855" y="30.654007">
+69 ^^D5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="95.99765" y="44.54717">
-75 vF4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="91.22347" y="27.897633">
+76 vF5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="105.61027" y="41.790794">
-82 vG4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="100.83609" y="25.141258">
+83 vG5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="115.222885" y="39.03442">
-89 vA4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="110.44871" y="22.384884">
+90 vA5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="124.8355" y="36.278046">
-96 vB4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="120.061325" y="19.628511">
+97 vB5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="134.44812" y="33.521675">
-62 D♭5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="129.67393" y="16.872139">
+63 D♭6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="144.06073" y="30.7653">
-69 E♭5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="139.28656" y="14.115765">
+70 E♭6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="153.67334" y="28.008926">
-76 F5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="148.89917" y="11.35939">
+77 F6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="163.28598" y="25.252552">
-83 G5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="158.5118" y="8.603016">
+84 G6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="172.89859" y="22.496178">
-90 A5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="168.1244" y="5.8466415">
+91 A6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="182.5112" y="19.739803">
-97 B5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="177.73703" y="3.0902672">
+98 B6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="192.12381" y="16.983429">
-63 C♯6
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="187.34964" y="0.33389282">
+64 C♯7
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="201.73645" y="14.227055">
-70 D♯6
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="196.96227" y="-2.4224815">
+71 D♯7
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="211.34906" y="11.47068">
-77 ^F6
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="21.515938" y="56.895206">
+85 ^G3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="220.96167" y="8.71431">
-84 ^G6
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="31.128555" y="54.138832">
+92 ^A3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="230.57428" y="5.9579353">
-91 ^A6
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="40.741173" y="51.382458">
+99 ^B3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="240.18692" y="3.201561">
-98 ^B6
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="50.353786" y="48.626083">
+65 vvD4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="249.79953" y="0.44519043">
-64 vvD7
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="59.966404" y="45.86971">
+72 vvE4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="259.41214" y="-2.3111877">
-71 vvE7
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="69.579025" y="43.113335">
+79 ^^F4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="35.902733" y="70.78837">
-91 ^A2
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="79.191635" y="40.356964">
+86 ^^G4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="45.51535" y="68.03199">
-98 ^B2
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="88.80426" y="37.600586">
+93 ^^A4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="55.127964" y="65.27562">
-64 vvD3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="98.41687" y="34.844215">
+100 vC4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="64.740585" y="62.519245">
-71 vvE3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="108.029495" y="32.087837">
+66 vD5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="74.353195" y="59.76287">
-78 ^^F3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="117.642105" y="29.331467">
+73 vE5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="83.96582" y="57.0065">
-85 ^^G3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="127.25473" y="26.575092">
+80 G♭5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="93.57843" y="54.250122">
-92 ^^A3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="136.86734" y="23.818718">
+87 A♭5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="103.191055" y="51.49375">
-99 vC3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="146.47995" y="21.062344">
+94 B♭5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="112.803665" y="48.737373">
-65 vD4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="156.09258" y="18.30597">
+60 C6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="122.41629" y="45.981003">
-72 vE4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="165.70518" y="15.549595">
+67 D6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="132.0289" y="43.22463">
-79 G♭4
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="141.64153" y="40.468254">
-86 A♭4
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="151.25414" y="37.71188">
-93 B♭4
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="160.86676" y="34.955505">
-59 C5
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="170.47937" y="32.19913">
-66 D5
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="180.092" y="29.44276">
-73 E5
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="189.7046" y="26.686386">
-80 F♯5
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="199.31723" y="23.930012">
-87 G♯5
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="208.92984" y="21.173637">
-94 A♯5
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="218.54245" y="18.417263">
-60 ^C6
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="228.15508" y="15.660889">
-67 ^D6
-</text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="237.76768" y="12.904514">
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="175.31781" y="12.793224">
 74 E6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="247.38031" y="10.14814">
-81 vvG6
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="184.93042" y="10.03685">
+81 F♯6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="256.99292" y="7.3917694">
-88 vvA6
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="194.54305" y="7.2804756">
+88 G♯6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="266.60553" y="4.635391">
-95 vvB6
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="204.15565" y="4.5241013">
+95 A♯6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="276.21814" y="1.8790207">
-61 ^^C7
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="213.76826" y="1.7677269">
+61 ^C7
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="285.83075" y="-0.8773575">
-68 ^^D7
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="223.38089" y="-0.98864746">
+68 ^D7
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="295.4434" y="-3.633728">
-75 vF7
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="232.9935" y="-3.7450218">
+75 ^E7
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="62.321365" y="72.222206">
-88 vvA2
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="19.096718" y="66.59816">
+61 ^C3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="71.93398" y="69.465836">
-95 vvB2
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="28.709335" y="63.841785">
+68 ^D3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="81.5466" y="66.70946">
-61 ^^C3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="38.321953" y="61.08541">
+75 ^E3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="91.15921" y="63.953087">
-68 ^^D3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="47.93457" y="58.32904">
+82 vvG3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="100.77183" y="61.196712">
-75 vF3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="57.547184" y="55.572662">
+89 vvA3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="110.384445" y="58.44034">
-82 vG3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="67.159805" y="52.81629">
+96 vvB3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="119.99706" y="55.683964">
-89 vA3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="76.772415" y="50.059917">
+62 ^^C4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="129.60968" y="52.92759">
-96 vB3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="86.38503" y="47.303543">
+69 ^^D4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="139.2223" y="50.17122">
-62 D♭4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="95.99765" y="44.54717">
+76 vF4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="148.83492" y="47.414845">
-69 E♭4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="105.61027" y="41.790794">
+83 vG4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="158.44753" y="44.65847">
-76 F4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="115.222885" y="39.03442">
+90 vA4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="168.06015" y="41.902096">
-83 G4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="124.8355" y="36.278046">
+97 vB4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="177.67276" y="39.14572">
-90 A4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="134.44812" y="33.521675">
+63 D♭5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="187.28539" y="36.389347">
-97 B4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="144.06073" y="30.7653">
+70 E♭5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="196.898" y="33.632973">
-63 C♯5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="153.67334" y="28.008926">
+77 F5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="206.51062" y="30.876598">
-70 D♯5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="163.28598" y="25.252552">
+84 G5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="216.12323" y="28.120224">
-77 ^F5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="172.89859" y="22.496178">
+91 A5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="225.73586" y="25.363853">
-84 ^G5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="182.5112" y="19.739803">
+98 B5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="235.34846" y="22.60748">
-91 ^A5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="192.12381" y="16.983429">
+64 C♯6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="244.96109" y="19.851105">
-98 ^B5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="201.73645" y="14.227055">
+71 D♯6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="254.5737" y="17.094734">
-64 vvD6
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="211.34906" y="11.47068">
+78 ^F6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="264.18634" y="14.338356">
-71 vvE6
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="220.96167" y="8.71431">
+85 ^G6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="273.79895" y="11.581985">
-78 ^^F6
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="230.57428" y="5.9579353">
+92 ^A6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="283.41156" y="8.825607">
-85 ^^G6
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="240.18692" y="3.201561">
+99 ^B6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="293.02417" y="6.0692368">
-92 ^^A6
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="249.79953" y="0.44519043">
+65 vvD7
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="302.6368" y="3.3128586">
-99 vC6
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="259.41214" y="-2.3111877">
+72 vvE7
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="98.352615" y="70.899666">
-92 ^^A2
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="35.902733" y="70.78837">
+92 ^A2
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="107.96523" y="68.143295">
-99 vC2
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="45.51535" y="68.03199">
+99 ^B2
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="117.57785" y="65.38692">
-65 vD3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="55.127964" y="65.27562">
+65 vvD3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="127.19047" y="62.630547">
-72 vE3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="64.740585" y="62.519245">
+72 vvE3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="136.80309" y="59.874172">
-79 G♭3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="74.353195" y="59.76287">
+79 ^^F3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="146.41571" y="57.117798">
-86 A♭3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="83.96582" y="57.0065">
+86 ^^G3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="156.02832" y="54.361423">
-93 B♭3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="93.57843" y="54.250122">
+93 ^^A3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="165.64093" y="51.60505">
-59 C4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="103.191055" y="51.49375">
+100 vC3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="175.25354" y="48.848675">
-66 D4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="112.803665" y="48.737373">
+66 vD4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="184.86618" y="46.092304">
-73 E4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="122.41629" y="45.981003">
+73 vE4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="194.47879" y="43.33593">
-80 F♯4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="132.0289" y="43.22463">
+80 G♭4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="204.0914" y="40.579556">
-87 G♯4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="141.64153" y="40.468254">
+87 A♭4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="213.70401" y="37.82318">
-94 A♯4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="151.25414" y="37.71188">
+94 B♭4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="223.31662" y="35.066807">
-60 ^C5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="160.86676" y="34.955505">
+60 C5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="232.92926" y="32.310432">
-67 ^D5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="170.47937" y="32.19913">
+67 D5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="242.54187" y="29.554058">
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="180.092" y="29.44276">
 74 E5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="252.15448" y="26.797684">
-81 vvG5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="189.7046" y="26.686386">
+81 F♯5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="261.7671" y="24.041313">
-88 vvA5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="199.31723" y="23.930012">
+88 G♯5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="271.37973" y="21.284935">
-95 vvB5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="208.92984" y="21.173637">
+95 A♯5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="280.99234" y="18.528564">
-61 ^^C6
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="218.54245" y="18.417263">
+61 ^C6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="290.60495" y="15.772186">
-68 ^^D6
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="228.15508" y="15.660889">
+68 ^D6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="300.2176" y="13.015816">
-75 vF6
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="237.76768" y="12.904514">
+75 ^E6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="309.8302" y="10.259445">
-82 vG6
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="247.38031" y="10.14814">
+82 vvG6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="124.77125" y="72.33351">
-89 vA2
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="256.99292" y="7.3917694">
+89 vvA6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="134.38387" y="69.57713">
-96 vB2
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="266.60553" y="4.635391">
+96 vvB6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="143.99648" y="66.82076">
-62 D♭3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="276.21814" y="1.8790207">
+62 ^^C7
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="153.6091" y="64.06439">
-69 E♭3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="285.83075" y="-0.8773575">
+69 ^^D7
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="163.22171" y="61.308014">
-76 F3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="295.4434" y="-3.633728">
+76 vF7
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="172.83434" y="58.55164">
-83 G3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="62.321365" y="72.222206">
+89 vvA2
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="182.44695" y="55.795265">
-90 A3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="71.93398" y="69.465836">
+96 vvB2
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="192.05957" y="53.03889">
-97 B3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="81.5466" y="66.70946">
+62 ^^C3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="201.67218" y="50.282516">
-63 C♯4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="91.15921" y="63.953087">
+69 ^^D3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="211.2848" y="47.526142">
-70 D♯4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="100.77183" y="61.196712">
+76 vF3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="220.89742" y="44.769768">
-77 ^F4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="110.384445" y="58.44034">
+83 vG3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="230.51004" y="42.013397">
-84 ^G4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="119.99706" y="55.683964">
+90 vA3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="240.12265" y="39.257023">
-91 ^A4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="129.60968" y="52.92759">
+97 vB3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="249.73528" y="36.50065">
-98 ^B4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="139.2223" y="50.17122">
+63 D♭4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="259.34787" y="33.744278">
-64 vvD5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="148.83492" y="47.414845">
+70 E♭4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="268.9605" y="30.9879">
-71 vvE5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="158.44753" y="44.65847">
+77 F4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="278.57312" y="28.23153">
-78 ^^F5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="168.06015" y="41.902096">
+84 G4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="288.18573" y="25.475151">
-85 ^^G5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="177.67276" y="39.14572">
+91 A4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="297.79834" y="22.71878">
-92 ^^A5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="187.28539" y="36.389347">
+98 B4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="307.41098" y="19.962402">
-99 vC5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="196.898" y="33.632973">
+64 C♯5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="160.80249" y="71.010956">
-93 B♭2
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="206.51062" y="30.876598">
+71 D♯5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="170.41512" y="68.254585">
-59 C3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="216.12323" y="28.120224">
+78 ^F5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="180.02773" y="65.498215">
-66 D3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="225.73586" y="25.363853">
+85 ^G5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="189.64035" y="62.74184">
-73 E3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="235.34846" y="22.60748">
+92 ^A5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="199.25296" y="59.985466">
-80 F♯3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="244.96109" y="19.851105">
+99 ^B5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="208.86559" y="57.22909">
-87 G♯3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="254.5737" y="17.094734">
+65 vvD6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="218.4782" y="54.472717">
-94 A♯3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="264.18634" y="14.338356">
+72 vvE6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="228.0908" y="51.716343">
-60 ^C4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="273.79895" y="11.581985">
+79 ^^F6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="237.70343" y="48.95997">
-67 ^D4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="283.41156" y="8.825607">
+86 ^^G6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="247.31604" y="46.203594">
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="293.02417" y="6.0692368">
+93 ^^A6
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="302.6368" y="3.3128586">
+100 vC6
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="98.352615" y="70.899666">
+93 ^^A2
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="107.96523" y="68.143295">
+100 vC2
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="117.57785" y="65.38692">
+66 vD3
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="127.19047" y="62.630547">
+73 vE3
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="136.80309" y="59.874172">
+80 G♭3
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="146.41571" y="57.117798">
+87 A♭3
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="156.02832" y="54.361423">
+94 B♭3
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="165.64093" y="51.60505">
+60 C4
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="175.25354" y="48.848675">
+67 D4
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="184.86618" y="46.092304">
 74 E4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="256.92865" y="43.44722">
-81 vvG4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="194.47879" y="43.33593">
+81 F♯4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="266.54126" y="40.69085">
-88 vvA4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="204.0914" y="40.579556">
+88 G♯4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="276.1539" y="37.93447">
-95 vvB4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="213.70401" y="37.82318">
+95 A♯4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="285.7665" y="35.1781">
-61 ^^C5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="223.31662" y="35.066807">
+61 ^C5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="295.37912" y="32.421722">
-68 ^^D5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="232.92926" y="32.310432">
+68 ^D5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="304.99176" y="29.665352">
-75 vF5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="242.54187" y="29.554058">
+75 ^E5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="314.60437" y="26.908981">
-82 vG5
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="252.15448" y="26.797684">
+82 vvG5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="187.22113" y="72.4448">
-90 A2
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="261.7671" y="24.041313">
+89 vvA5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="196.83374" y="69.68843">
-97 B2
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="271.37973" y="21.284935">
+96 vvB5
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="206.44635" y="66.93205">
-63 C♯3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="280.99234" y="18.528564">
+62 ^^C6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="216.05899" y="64.175674">
-70 D♯3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="290.60495" y="15.772186">
+69 ^^D6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="225.6716" y="61.419304">
-77 ^F3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="300.2176" y="13.015816">
+76 vF6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="235.28421" y="58.662933">
-84 ^G3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="309.8302" y="10.259445">
+83 vG6
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="244.89682" y="55.90656">
-91 ^A3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="124.77125" y="72.33351">
+90 vA2
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="254.50946" y="53.150185">
-98 ^B3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="134.38387" y="69.57713">
+97 vB2
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="264.12207" y="50.393814">
-64 vvD4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="143.99648" y="66.82076">
+63 D♭3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="273.73468" y="47.637436">
-71 vvE4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="153.6091" y="64.06439">
+70 E♭3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="283.3473" y="44.881065">
-78 ^^F4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="163.22171" y="61.308014">
+77 F3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="292.9599" y="42.124687">
-85 ^^G4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="172.83434" y="58.55164">
+84 G3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="302.5725" y="39.368317">
-92 ^^A4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="182.44695" y="55.795265">
+91 A3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="312.18515" y="36.61194">
-99 vC4
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="192.05957" y="53.03889">
+98 B3
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="223.25238" y="71.12226">
-94 A♯2
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="201.67218" y="50.282516">
+64 C♯4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="232.86499" y="68.36589">
-60 ^C3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="211.2848" y="47.526142">
+71 D♯4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="242.47762" y="65.60951">
-67 ^D3
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="220.89742" y="44.769768">
+78 ^F4
 </text>
-<text class="black" dominant-baseline="middle" text-anchor="middle" x="252.09023" y="62.853138">
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="230.51004" y="42.013397">
+85 ^G4
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="240.12265" y="39.257023">
+92 ^A4
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="249.73528" y="36.50065">
+99 ^B4
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="259.34787" y="33.744278">
+65 vvD5
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="268.9605" y="30.9879">
+72 vvE5
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="278.57312" y="28.23153">
+79 ^^F5
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="288.18573" y="25.475151">
+86 ^^G5
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="297.79834" y="22.71878">
+93 ^^A5
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="307.41098" y="19.962402">
+100 vC5
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="160.80249" y="71.010956">
+94 B♭2
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="170.41512" y="68.254585">
+60 C3
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="180.02773" y="65.498215">
+67 D3
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="189.64035" y="62.74184">
 74 E3
 </text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="199.25296" y="59.985466">
+81 F♯3
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="208.86559" y="57.22909">
+88 G♯3
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="218.4782" y="54.472717">
+95 A♯3
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="228.0908" y="51.716343">
+61 ^C4
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="237.70343" y="48.95997">
+68 ^D4
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="247.31604" y="46.203594">
+75 ^E4
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="256.92865" y="43.44722">
+82 vvG4
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="266.54126" y="40.69085">
+89 vvA4
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="276.1539" y="37.93447">
+96 vvB4
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="285.7665" y="35.1781">
+62 ^^C5
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="295.37912" y="32.421722">
+69 ^^D5
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="304.99176" y="29.665352">
+76 vF5
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="314.60437" y="26.908981">
+83 vG5
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="187.22113" y="72.4448">
+91 A2
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="196.83374" y="69.68843">
+98 B2
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="206.44635" y="66.93205">
+64 C♯3
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="216.05899" y="64.175674">
+71 D♯3
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="225.6716" y="61.419304">
+78 ^F3
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="235.28421" y="58.662933">
+85 ^G3
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="244.89682" y="55.90656">
+92 ^A3
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="254.50946" y="53.150185">
+99 ^B3
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="264.12207" y="50.393814">
+65 vvD4
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="273.73468" y="47.637436">
+72 vvE4
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="283.3473" y="44.881065">
+79 ^^F4
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="292.9599" y="42.124687">
+86 ^^G4
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="302.5725" y="39.368317">
+93 ^^A4
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="312.18515" y="36.61194">
+100 vC4
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="223.25238" y="71.12226">
+95 A♯2
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="232.86499" y="68.36589">
+61 ^C3
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="242.47762" y="65.60951">
+68 ^D3
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="252.09023" y="62.853138">
+75 ^E3
+</text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="261.70285" y="60.096764">
-81 vvG3
+82 vvG3
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="271.31546" y="57.340393">
-88 vvA3
+89 vvA3
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="280.92807" y="54.584015">
-95 vvB3
+96 vvB3
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="290.54068" y="51.827644">
-61 ^^C4
+62 ^^C4
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="300.1533" y="49.071266">
-68 ^^D4
+69 ^^D4
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="309.76593" y="46.314896">
-75 vF4
+76 vF4
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="319.37854" y="43.558525">
-82 vG4
+83 vG4
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="249.671" y="72.55609">
-91 ^A2
+92 ^A2
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="259.28363" y="69.79972">
-98 ^B2
+99 ^B2
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="268.89624" y="67.04335">
-64 vvD3
+65 vvD3
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="278.50885" y="64.28697">
-71 vvE3
+72 vvE3
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="288.12146" y="61.5306">
-78 ^^F3
+79 ^^F3
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="297.73407" y="58.774223">
-85 ^^G3
+86 ^^G3
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="307.34668" y="56.017853">
-92 ^^A3
+93 ^^A3
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="316.95935" y="53.261475">
-99 vC3
+100 vC3
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="285.70227" y="71.23357">
-95 vvB2
+96 vvB2
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="295.31488" y="68.477196">
-61 ^^C3
+62 ^^C3
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="304.9275" y="65.72082">
-68 ^^D3
+69 ^^D3
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="314.54013" y="62.964447">
-75 vF3
+76 vF3
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="324.15274" y="60.208076">
-82 vG3
+83 vG3
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="312.12088" y="72.66739">
-92 ^^A2
+93 ^^A2
 </text>
 <text class="black" dominant-baseline="middle" text-anchor="middle" x="321.73352" y="69.91101">
-99 vC2
+100 vC2
 </text>
 </svg>
