@@ -21,6 +21,8 @@ mod ltn;
 mod svg;
 mod fill;
 
+pub use svg::SvgOut;
+
 /// The lumatone itself represents the keys by a pair of numbers, the group, a
 /// number between 0 and 4, and the key itself, a number between 0 and 56.
 #[derive(Debug, Copy, Clone, Eq, PartialEq)]

@@ -3,6 +3,8 @@ name = "microtone"
 version = "0.1.0"
 edition = "2021"
 
+default-run = "microtone"
+
 [dependencies]
 anyhow = "1.0.83"
 regex = "1.10.4"

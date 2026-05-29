@@ -1,0 +1,33 @@
+<svg viewBox="-20 -20 360 120" xmlns="http://www.w3.org/2000/svg">
+<style>
+.black { font: 3px serif; }
+</style>
+<path d="M172.07077,37.748978 L176.08138,33.595867 L174.48997,28.04602 L168.88797,26.649284 L164.87737,30.802395 L166.46875,36.35224 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M181.6834,34.992607 L185.694,30.839497 L184.1026,25.28965 L178.5006,23.892914 L174.48999,28.046024 L176.08138,33.59587 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M155.26474,33.558773 L159.27534,29.405663 L157.68394,23.855816 L152.08194,22.45908 L148.07133,26.61219 L149.66272,32.162037 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M164.87738,30.802399 L168.88799,26.649288 L167.29659,21.099442 L161.69458,19.702705 L157.68398,23.855816 L159.27536,29.40566 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M174.48999,28.046024 L178.5006,23.892914 L176.9092,18.343067 L171.30719,16.946331 L167.29659,21.099442 L168.88797,26.649286 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M184.1026,25.28965 L188.1132,21.13654 L186.5218,15.586693 L180.9198,14.189957 L176.9092,18.343067 L178.50058,23.892912 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M162.45816,40.505352 L166.46877,36.35224 L164.87737,30.802395 L159.27536,29.405659 L155.26476,33.55877 L156.85614,39.108616 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="170.47937" y="32.19913">
+1
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="180.092" y="29.44276">
+2
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="153.67334" y="28.008926">
+3
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="163.28598" y="25.252552">
+4
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="172.89859" y="22.496178">
+5
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="182.5112" y="19.739803">
+6
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="160.86676" y="34.955505">
+0
+</text>
+</svg>

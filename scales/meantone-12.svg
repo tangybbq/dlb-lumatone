@@ -1,0 +1,53 @@
+<svg viewBox="-20 -20 360 120" xmlns="http://www.w3.org/2000/svg">
+<style>
+.black { font: 3px serif; }
+</style>
+<path d="M136.03952,39.07152 L140.05013,34.91841 L138.45872,29.368565 L132.85672,27.971828 L128.84612,32.12494 L130.4375,37.674786 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M172.07077,37.748978 L176.08138,33.595867 L174.48997,28.04602 L168.88797,26.649284 L164.87737,30.802395 L166.46875,36.35224 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M145.65213,36.315147 L149.66273,32.162037 L148.07133,26.61219 L142.46933,25.215454 L138.45872,29.368565 L140.05011,34.91841 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M181.6834,34.992607 L185.694,30.839497 L184.1026,25.28965 L178.5006,23.892914 L174.48999,28.046024 L176.08138,33.59587 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M155.26474,33.558773 L159.27534,29.405663 L157.68394,23.855816 L152.08194,22.45908 L148.07133,26.61219 L149.66272,32.162037 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M191.296,32.236233 L195.30661,28.083122 L193.71521,22.533276 L188.1132,21.13654 L184.1026,25.28965 L185.69398,30.839495 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M164.87738,30.802399 L168.88799,26.649288 L167.29659,21.099442 L161.69458,19.702705 L157.68398,23.855816 L159.27536,29.40566 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M138.45874,29.368565 L142.46935,25.215454 L140.87794,19.665607 L135.27594,18.268871 L131.26534,22.421982 L132.85672,27.971827 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M174.48999,28.046024 L178.5006,23.892914 L176.9092,18.343067 L171.30719,16.946331 L167.29659,21.099442 L168.88797,26.649286 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M148.07135,26.61219 L152.08195,22.45908 L150.49055,16.909233 L144.88855,15.512497 L140.87794,19.665607 L142.46933,25.215452 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M184.1026,25.28965 L188.1132,21.13654 L186.5218,15.586693 L180.9198,14.189957 L176.9092,18.343067 L178.50058,23.892912 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M162.45816,40.505352 L166.46877,36.35224 L164.87737,30.802395 L159.27536,29.405659 L155.26476,33.55877 L156.85614,39.108616 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="134.44812" y="33.521675">
+1
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="170.47937" y="32.19913">
+2
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="144.06073" y="30.7653">
+3
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="180.092" y="29.44276">
+4
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="153.67334" y="28.008926">
+5
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="189.7046" y="26.686386">
+6
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="163.28598" y="25.252552">
+7
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="136.86734" y="23.818718">
+8
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="172.89859" y="22.496178">
+9
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="146.47995" y="21.062344">
+10
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="182.5112" y="19.739803">
+11
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="160.86676" y="34.955505">
+0
+</text>
+</svg>

@@ -1,0 +1,41 @@
+<svg viewBox="-20 -20 360 120" xmlns="http://www.w3.org/2000/svg">
+<style>
+.black { font: 3px serif; }
+</style>
+<path d="M234.52066,37.86028 L238.53127,33.70717 L236.93987,28.157322 L231.33786,26.760586 L227.32726,30.913696 L228.91864,36.463543 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M208.10202,36.426445 L212.11263,32.273335 L210.52122,26.723488 L204.91922,25.326752 L200.90862,29.479862 L202.5,35.02971 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M119.2335,34.881313 L123.24411,30.728203 L121.65272,25.178356 L116.05071,23.78162 L112.0401,27.93473 L113.63149,33.484577 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M92.814865,33.44748 L96.82548,29.294369 L95.234085,23.744522 L89.63208,22.347786 L85.62147,26.500896 L87.21286,32.050743 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M164.87738,30.802399 L168.88799,26.649288 L167.29659,21.099442 L161.69458,19.702705 L157.68398,23.855816 L159.27536,29.40566 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M138.45874,29.368565 L142.46935,25.215454 L140.87794,19.665607 L135.27594,18.268871 L131.26534,22.421982 L132.85672,27.971827 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M210.52124,26.723484 L214.53185,22.570374 L212.94044,17.020527 L207.33844,15.623791 L203.32784,19.776901 L204.91922,25.326746 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M184.1026,25.28965 L188.1132,21.13654 L186.5218,15.586693 L180.9198,14.189957 L176.9092,18.343067 L178.50058,23.892912 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<path d="M162.45816,40.505352 L166.46877,36.35224 L164.87737,30.802395 L159.27536,29.405659 L155.26476,33.55877 L156.85614,39.108616 z" fill="#fdfdfd" stroke="black" stroke-width="0.3"/>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="232.92926" y="32.310432">
+1
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="206.51062" y="30.876598">
+2
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="117.642105" y="29.331467">
+3
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="91.22347" y="27.897633">
+4
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="163.28598" y="25.252552">
+5
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="136.86734" y="23.818718">
+6
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="208.92984" y="21.173637">
+7
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="182.5112" y="19.739803">
+8
+</text>
+<text class="black" dominant-baseline="middle" text-anchor="middle" x="160.86676" y="34.955505">
+0
+</text>
+</svg>
